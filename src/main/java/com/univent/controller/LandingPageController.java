@@ -1,4 +1,4 @@
-package controller;
+package com.univent.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,7 +21,7 @@ public class LandingPageController extends BaseController {
         System.out.println("Sign Up Button Clicked");
         // Switch to SignUp scene
         Stage stage = (Stage) signUpButton.getScene().getWindow();
-        switchToScene("/view/SignUp.fxml", stage);
+        switchToScene("src/main/resources/view/SignUp.fxml", stage);
     }
 
     @FXML

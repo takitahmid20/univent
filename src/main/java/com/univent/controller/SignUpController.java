@@ -1,13 +1,13 @@
-package controller;
+package com.univent.controller;
 
-import services.UserService;
-import utils.DatabaseUtility;
+import com.univent.services.UserService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -34,10 +34,22 @@ public class SignUpController {
     @FXML
     private Label messageLabel;
 
+    @FXML
+    private Label signInLabel;
+
     private final UserService userService = new UserService();
 
     @FXML
-    private void handleSignUpButton() {
+    public void initialize() {
+        System.out.println("SignUpController initialized");
+        System.out.println("Is signUpButton disabled? " + signUpButton.isDisable());
+        signUpButton.setOnAction(event -> handleSignUpButton());
+
+    }
+
+
+    @FXML
+    public void handleSignUpButton() {
         System.out.println("Sign Up Button Clicked");
 
         String username = usernameField.getText();
@@ -60,43 +72,29 @@ public class SignUpController {
             messageLabel.setStyle("-fx-text-fill: green;");
 
             // Switch to the SignIn page after successful registration
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SignIn.fxml"));
-                if (loader == null) {
-                    logger.log(Level.SEVERE, "FXML resource for SignIn not found!");
-                    return;
-                }
-                AnchorPane pane = loader.load();
-                Stage stage = (Stage) signUpButton.getScene().getWindow();
-                stage.getScene().setRoot(pane);
-            } catch (IOException e) {
-                logger.log(Level.SEVERE, "An error occurred while switching to the SignIn scene", e);
-            }
-
+            switchToSignInPage();
         } else {
             System.out.println("Username already exists");
             messageLabel.setText("Username already exists. Please choose another.");
             messageLabel.setStyle("-fx-text-fill: red;");
         }
     }
+
+    @FXML
+    public void handleSignInLabelClick(MouseEvent event) {
+        System.out.println("Sign In Label Clicked");
+        switchToSignInPage();
+    }
+
+    private void switchToSignInPage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SignIn.fxml"));
+            AnchorPane pane = loader.load();
+            Stage stage = (Stage) signUpButton.getScene().getWindow();
+            stage.getScene().setRoot(pane);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "An error occurred while switching to the SignIn scene", e);
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
 }
-
-
-
-//    private void handleSignInLabelClick(){
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("./resources/view/SignIn.fxml"));
-//            AnchorPane pane = loader.load();
-//
-//            // Get the controller of the loaded page and pass the DashboardController to it
-////            if (loader.getController() instanceof BaseController) {
-////                BaseController controller = loader.getController();
-////                controller.setDashboardController(this);
-////            }
-////
-////            contentArea.getChildren().setAll(pane);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-

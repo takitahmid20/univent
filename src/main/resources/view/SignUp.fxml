@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1440.0" styleClass="container" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
+<AnchorPane prefHeight="900.0" prefWidth="1440.0" styleClass="container" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.SignUpController">
     <children>
         <!-- Background ImageView -->
         <ImageView fx:id="backgroundImageView" fitHeight="912.0" fitWidth="516.0" layoutX="-8.0" layoutY="-6.0" pickOnBounds="true" styleClass="background-image">
@@ -38,7 +38,7 @@
         <PasswordField fx:id="passwordField" layoutX="611.0" layoutY="412.0" prefHeight="60.0" prefWidth="650.0" promptText="Password" styleClass="input-field" />
 
         <!-- Sign Up Button -->
-        <Button fx:id="signUpButton" layoutX="609.0" layoutY="515.0" mnemonicParsing="false" onAction="#handleSignUpButton" onMouseClicked="#handleSignUpButton" prefHeight="60.0" prefWidth="650.0" styleClass="button" text="Sign Up">
+        <Button fx:id="signUpButton" layoutX="609.0" layoutY="515.0" mnemonicParsing="false" onAction="#handleSignUpButton" prefHeight="60.0" prefWidth="650.0" styleClass="button" text="Sign Up">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>

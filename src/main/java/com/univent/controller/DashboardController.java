@@ -1,10 +1,8 @@
-package controller;
+package com.univent.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.Label;
-import javafx.scene.control.Button;
 
 import java.io.IOException;
 
@@ -49,7 +47,7 @@ public class DashboardController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/" + page + ".fxml"));
             AnchorPane pane = loader.load();
 
-            // Get the controller of the loaded page and pass the DashboardController to it
+            // Get the com.univent.controller of the loaded page and pass the DashboardController to it
             if (loader.getController() instanceof BaseController) {
                 BaseController controller = loader.getController();
                 controller.setDashboardController(this);

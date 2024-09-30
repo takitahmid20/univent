@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/profile.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/profile.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.ProfileController">
 
     <!-- Sidebar for Navigation -->
     <VBox fx:id="sidebar" layoutX="-2.0" prefHeight="800.0" prefWidth="212.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="0.0">

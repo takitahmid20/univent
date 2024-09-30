@@ -1,4 +1,4 @@
-package controller;
+package com.univent.controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

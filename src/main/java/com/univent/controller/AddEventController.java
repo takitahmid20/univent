@@ -1,9 +1,9 @@
-package controller;
+package com.univent.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import services.EventService;
+import com.univent.services.EventService;
 
 public class AddEventController extends BaseController {
 

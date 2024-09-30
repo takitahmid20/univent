@@ -1,4 +1,4 @@
-package services;
+package com.univent.services;
 
 public class Event {
     private String name;

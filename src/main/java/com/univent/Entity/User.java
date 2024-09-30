@@ -1,4 +1,4 @@
-package Entity;
+package com.univent.Entity;
 
 public class User {
     private String username;
