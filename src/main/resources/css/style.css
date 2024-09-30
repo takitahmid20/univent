@@ -1,0 +1,177 @@
+/* General container style */
+.container {
+    -fx-background-color: #f5f5f5; /* Light grey background */
+}
+
+/* Input fields styling */
+.input-field {
+    -fx-background-color: #ffffff;  /* White background */
+    -fx-background-radius: 10px;    /* Rounded corners */
+    -fx-border-color: #9a9a9a;      /* Light grey border */
+    -fx-border-radius: 10px;        /* Rounded corners on border */
+    -fx-padding: 10px;              /* Padding inside the text field */
+    -fx-font-size: 16px;            /* Font size for text */
+}
+
+/* Button styling */
+.button {
+    -fx-background-color: #FF7A5A; /* Coral color for buttons */
+    -fx-text-fill: #ffffff;        /* White text */
+    -fx-background-radius: 10px;   /* Rounded corners */
+    -fx-padding: 10px 20px;        /* Padding for a more clickable button */
+    -fx-font-size: 18px;           /* Larger font size for readability */
+    -fx-font-weight: bold;         /* Bold text */
+}
+
+/* Button hover effect */
+.button:hover {
+    -fx-background-color: #FF5733; /* Darker shade when hovered */
+}
+
+/* Label styling */
+.label-text {
+    -fx-font-size: 18px;          /* Larger font size for labels */
+    -fx-text-fill: #333333;       /* Dark grey text */
+}
+
+/* Text for headings, e.g., "Sign Up" */
+.heading-text {
+    -fx-font-family: "Poppins Bold";
+    -fx-font-size: 44px;
+    -fx-text-fill: #333333;        /* Dark grey */
+}
+
+/* Text for titles like "Never Miss an Event in Bangladesh" */
+.welcome-text {
+    -fx-font-family: "Poppins Bold";
+    -fx-font-size: 48px;
+    -fx-text-fill: #ffffff;        /* White text */
+}
+
+/* Error and success message label styling */
+.message-label {
+    -fx-font-size: 16px;          /* Standard text size for messages */
+    -fx-font-weight: bold;        /* Bold for emphasis */
+}
+
+/* Background image styling */
+.background-image {
+    -fx-effect: dropshadow( gaussian , rgba(0, 0, 0, 0.75) , 10, 0.5 , 0 , 0 );
+}
+/*--------------*/
+
+/* General AnchorPane styling */
+.root {
+    -fx-background-color: #f4f4f4; /* Light gray background for the entire page */
+}
+
+/* Navbar Styling */
+.navbar {
+    -fx-background-color: #333; /* Dark background for the navbar */
+    -fx-padding: 10px;
+    -fx-alignment: center-left;
+}
+
+.menu-item {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.menu-item:hover {
+    -fx-underline: true;
+    -fx-text-fill: #ff7a5a; /* Change color when hovered */
+}
+
+/* Logo Styling */
+#logo {
+    -fx-cursor: hand; /* Pointer cursor to indicate clickable */
+}
+
+/* Button Styling */
+.sign-up-button, .sign-in-button {
+    -fx-background-color: #ff7a5a;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.sign-up-button:hover, .sign-in-button:hover {
+    -fx-background-color: #e66a4a;
+}
+
+/* Background Section Styling */
+.background-image {
+    -fx-fit-width: 1440px;
+    -fx-fit-height: 400px;
+    -fx-background-size: cover;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.6), 50, 0.0, 0, 0); /* Adding depth to the image */
+}
+
+.search-container {
+    -fx-background-color: rgba(255, 255, 255, 0.8); /* Transparent background for better visibility */
+    -fx-padding: 15px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+}
+
+.input-search {
+    -fx-pref-width: 400px;
+    -fx-padding: 10px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1px;
+    -fx-background-color: #ffffff;
+    -fx-font-size: 16px;
+}
+
+.search-button {
+    -fx-background-color: #ff7a5a;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 16px;
+}
+
+.search-button:hover {
+    -fx-background-color: #e66a4a;
+}
+
+/* TabPane Styling */
+.tab-pane {
+    -fx-tab-min-width: 100px; /* Minimum width of the tabs */
+    -fx-tab-max-width: 150px;
+    -fx-background-color: #f4f4f4;
+}
+
+.tab {
+    -fx-background-color: #ffffff; /* Background of each tab */
+    -fx-padding: 5px;
+    -fx-border-color: transparent transparent #ff7a5a transparent; /* Orange border below selected tab */
+    -fx-border-width: 0 0 3px 0; /* Show border only on the bottom */
+}
+
+.tab:selected {
+    -fx-background-color: #ff7a5a; /* Background color when a tab is selected */
+    -fx-text-fill: #ffffff;
+}
+
+/* Individual Event Box Styling */
+.event-box {
+    -fx-padding: 10px;
+    -fx-background-color: #fafafa; /* Light background for event boxes */
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0.1, 0, 4);
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+}
+

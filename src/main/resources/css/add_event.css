@@ -1,0 +1,122 @@
+/* General Container Styles */
+.anchor-pane {
+    -fx-background-color: #f4f4f4;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    -fx-background-color: #333333;
+    -fx-padding: 20;
+    -fx-spacing: 15;
+}
+
+.nav-item {
+    -fx-font-size: 18px;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 10;
+    -fx-cursor: hand;
+}
+
+.nav-item:hover {
+    -fx-background-color: #444444;
+    -fx-border-radius: 5;
+    -fx-padding: 10;
+}
+
+.add-event-button {
+    -fx-background-color: #ff7a5a;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+}
+
+.add-event-button:hover {
+    -fx-background-color: #e06950;
+}
+
+/* Content Area General Styling */
+.content-area {
+    -fx-padding: 30;
+}
+
+/* Heading Styles */
+.heading {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-padding: 10 0;
+}
+
+/* Input Field Styles */
+.input-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #9a9a9a;
+    -fx-border-radius: 5;
+    -fx-padding: 10;
+    -fx-font-size: 16px;
+    -fx-pref-width: 400px;
+}
+
+/* Save Event Button Styles */
+.save-event-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 18px;
+    -fx-border-radius: 5;
+    -fx-padding: 10;
+    -fx-cursor: hand;
+}
+
+.save-event-button:hover {
+    -fx-background-color: #45a049;
+}
+
+/* Join Now Button */
+.join-now-button {
+    -fx-background-color: #ff7a5a;
+    -fx-text-fill: white;
+    -fx-border-radius: 5;
+    -fx-font-size: 16px;
+}
+
+.join-now-button:hover {
+    -fx-background-color: #e06950;
+}
+
+
+
+/* General Container Styles */
+.add-event-section {
+    -fx-background-color: #ffffff;
+    -fx-padding: 20;
+    -fx-spacing: 15;
+}
+
+.heading {
+    -fx-font-size: 28px;
+    -fx-text-fill: #444444;
+    -fx-font-weight: bold;
+}
+
+/* Input Fields */
+.input-field {
+    -fx-background-color: #f4f4f4;
+    -fx-padding: 10;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 5;
+    -fx-font-size: 16px;
+}
+
+/* Add Event Button */
+.add-event-button {
+    -fx-background-color: #ff7a5a;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+}
+
+.add-event-button:hover {
+    -fx-background-color: #e06950;
+}

@@ -1,0 +1,54 @@
+/* General Styling for Buttons */
+.button {
+    -fx-background-color: #ff7a5a;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-border-radius: 8;
+    -fx-padding: 10;
+}
+
+.button:hover {
+    -fx-background-color: #e06950;
+}
+
+/* General Styling for Labels */
+.label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #333333;
+}
+
+/* Navbar Styling */
+.navbar {
+    -fx-background-color: #333333;
+    -fx-padding: 10;
+}
+
+.menu-item {
+    -fx-font-size: 18px;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+    -fx-padding: 5;
+}
+
+.menu-item:hover {
+    -fx-background-color: #444444;
+    -fx-border-radius: 5;
+}
+
+/* Styling for Background Images */
+.background-image {
+    -fx-fit-width: 100%;
+    -fx-fit-height: 100%;
+    -fx-position: absolute;
+    -fx-object-fit: cover;
+}
+
+/* Styling for Input Fields */
+.input-field {
+    -fx-background-color: #ffffff;
+    -fx-padding: 10;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 5;
+    -fx-font-size: 16px;
+    -fx-min-height: 40px;
+}

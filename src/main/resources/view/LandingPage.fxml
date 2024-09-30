@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="1519.0" prefWidth="1444.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LandingPageController">
+
+    <!-- Top Navbar -->
+    <AnchorPane fx:id="navbar" prefHeight="70.0" styleClass="navbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <HBox layoutX="10.0" layoutY="10.0" spacing="30.0">
+
+            <!-- Middle - Menu -->
+            <HBox alignment="CENTER" layoutX="200.0" spacing="30.0" />
+
+            <!-- Right side - Sign Up / Sign In -->
+            <HBox alignment="CENTER" layoutX="1200.0" spacing="10.0" />
+        </HBox>
+        <Button fx:id="signUpButton" layoutX="1314.0" layoutY="18.0" onAction="#handleSignUpButtonClick" styleClass="sign-up-button" text="Sign Up" />
+        <Button fx:id="signInButton" layoutX="1206.0" layoutY="20.0" onAction="#handleSignInButtonClick" styleClass="sign-in-button" text="Sign In" />
+        <Label layoutX="843.0" layoutY="17.0" onMouseClicked="#handleAllEventsClick" styleClass="menu-item" text="All Events" textAlignment="CENTER" />
+        <Label layoutX="741.0" layoutY="16.0" onMouseClicked="#handleAboutUsClick" styleClass="menu-item" text="About Us" />
+        <Label layoutX="663.0" layoutY="15.0" onMouseClicked="#handleHomeClick" styleClass="menu-item" text="Home" />
+        <!-- Left side - Logo -->
+        <ImageView fx:id="logo" fitHeight="50.0" fitWidth="120.0" layoutX="90.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/logo.png" />
+            </image>
+        </ImageView>
+    </AnchorPane>
+
+    <!-- Background Image with Search Section -->
+    <AnchorPane fx:id="searchSection" prefHeight="400.0" prefWidth="1440.0" AnchorPane.topAnchor="70.0">
+        <ImageView fitHeight="574.0" fitWidth="1444.0" pickOnBounds="true" styleClass="background-image">
+            <image>
+                <Image url="@../images/bgimage.jpg" />
+            </image>
+        </ImageView>
+
+        <!-- Search Box on the Image -->
+        <HBox alignment="CENTER" layoutX="470.0" layoutY="150.0" spacing="20.0" styleClass="search-container">
+            <TextField fx:id="eventSearchField" promptText="Search Events" styleClass="input-search" />
+            <Button onAction="#handleSearchButtonClick" styleClass="search-button" text="Search" />
+        </HBox>
+    </AnchorPane>
+
+    <!-- Events List Section using TabPane -->
+    <AnchorPane fx:id="eventListSection" layoutY="427.0" prefHeight="1092.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="470.0">
+        <TabPane fx:id="eventTabPane" layoutX="20.0" layoutY="20.0" prefHeight="1000.0" prefWidth="1400.0">
+
+            <!-- All Events Tab -->
+            <Tab closable="false" text="All">
+                <AnchorPane>
+                    <GridPane fx:id="allEventsGrid" hgap="20" layoutX="20.0" layoutY="20.0" styleClass="event-list-grid" vgap="20">
+                        <!-- Example Event Box in All Tab -->
+                        <children>
+                            <VBox prefHeight="288.0" prefWidth="222.0" styleClass="event-box">
+                                <ImageView fx:id="eventImage1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/bgimage.jpg" />
+                                    </image>
+                                </ImageView>
+                                <Label styleClass="event-title" text="Event Title" />
+                                <Label styleClass="event-date" text="Date: March 10, 2024" />
+                                <Label styleClass="event-organizer" text="Organizer: Example Organizer" />
+                                <Button onAction="#handleJoinNowButtonClick" styleClass="join-now-button" text="Join Now" />
+                            </VBox>
+                        </children>
+                  <columnConstraints>
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                  </rowConstraints>
+                    </GridPane>
+                </AnchorPane>
+            </Tab>
+
+            <!-- Competition Tab -->
+            <Tab closable="false" text="Competition">
+                <AnchorPane>
+                    <GridPane fx:id="competitionEventsGrid" hgap="20" layoutX="20.0" layoutY="20.0" styleClass="event-list-grid" vgap="20">
+                        <!-- Example Event Box in Competition Tab -->
+                        <children>
+                            <VBox prefHeight="288.0" prefWidth="222.0" styleClass="event-box">
+                                <ImageView fx:id="competitionEventImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/bgimage.jpg" />
+                                    </image>
+                                </ImageView>
+                                <Label styleClass="event-title" text="Competition Title" />
+                                <Label styleClass="event-date" text="Date: April 5, 2024" />
+                                <Label styleClass="event-organizer" text="Organizer: Example Organizer" />
+                                <Button onAction="#handleJoinNowButtonClick" styleClass="join-now-button" text="Join Now" />
+                            </VBox>
+                        </children>
+                  <columnConstraints>
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                  </rowConstraints>
+                    </GridPane>
+                </AnchorPane>
+            </Tab>
+
+            <!-- Workshop Tab -->
+            <Tab closable="false" text="Workshop">
+                <AnchorPane>
+                    <GridPane fx:id="workshopEventsGrid" hgap="20" layoutX="20.0" layoutY="20.0" styleClass="event-list-grid" vgap="20">
+                        <!-- Example Event Box in Workshop Tab -->
+                        <children>
+                            <VBox prefHeight="288.0" prefWidth="222.0" styleClass="event-box">
+                                <ImageView fx:id="workshopEventImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/bgimage.jpg" />
+                                    </image>
+                                </ImageView>
+                                <Label styleClass="event-title" text="Workshop Title" />
+                                <Label styleClass="event-date" text="Date: May 10, 2024" />
+                                <Label styleClass="event-organizer" text="Organizer: Example Organizer" />
+                                <Button onAction="#handleJoinNowButtonClick" styleClass="join-now-button" text="Join Now" />
+                            </VBox>
+                        </children>
+                  <columnConstraints>
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                  </rowConstraints>
+                    </GridPane>
+                </AnchorPane>
+            </Tab>
+
+            <!-- Seminar Tab -->
+            <Tab closable="false" text="Seminar">
+                <AnchorPane>
+                    <GridPane fx:id="seminarEventsGrid" hgap="20" layoutX="20.0" layoutY="20.0" styleClass="event-list-grid" vgap="20">
+                        <!-- Example Event Box in Seminar Tab -->
+                        <children>
+                            <VBox prefHeight="288.0" prefWidth="222.0" styleClass="event-box">
+                                <ImageView fx:id="seminarEventImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/bgimage.jpg" />
+                                    </image>
+                                </ImageView>
+                                <Label styleClass="event-title" text="Seminar Title" />
+                                <Label styleClass="event-date" text="Date: June 15, 2024" />
+                                <Label styleClass="event-organizer" text="Organizer: Example Organizer" />
+                                <Button onAction="#handleJoinNowButtonClick" styleClass="join-now-button" text="Join Now" />
+                            </VBox>
+                        </children>
+                  <columnConstraints>
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                  </rowConstraints>
+                    </GridPane>
+                </AnchorPane>
+            </Tab>
+        </TabPane>
+    </AnchorPane>
+
+</AnchorPane>

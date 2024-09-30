@@ -1,0 +1,47 @@
+/* General Container Styles */
+.anchor-pane {
+    -fx-background-color: #f4f4f4;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    -fx-background-color: #333333;
+    -fx-padding: 20;
+    -fx-spacing: 15;
+}
+
+.nav-item {
+    -fx-font-size: 18px;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 10;
+    -fx-cursor: hand;
+}
+
+.nav-item:hover {
+    -fx-background-color: #444444;
+    -fx-border-radius: 5;
+    -fx-padding: 10;
+}
+
+.add-event-button {
+    -fx-background-color: #ff7a5a;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+}
+
+.add-event-button:hover {
+    -fx-background-color: #e06950;
+}
+
+/* Main Content Area Styles */
+.content-area {
+    -fx-padding: 20;
+}
+
+.dashboard-title {
+    -fx-font-size: 36px;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
