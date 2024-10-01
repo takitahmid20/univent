@@ -39,13 +39,13 @@ public class SignUpController {
 
     private final UserService userService = new UserService();
 
-    @FXML
-    public void initialize() {
-        System.out.println("SignUpController initialized");
-        System.out.println("Is signUpButton disabled? " + signUpButton.isDisable());
-        signUpButton.setOnAction(event -> handleSignUpButton());
-
-    }
+//    @FXML
+//    public void initialize() {
+//        System.out.println("SignUpController initialized");
+//        System.out.println("Is signUpButton disabled? " + signUpButton.isDisable());
+//        signUpButton.setOnAction(event -> handleSignUpButton());
+//
+//    }
 
 
     @FXML
@@ -65,7 +65,7 @@ public class SignUpController {
         }
 
         // Register the user
-        boolean isRegistered = userService.registerUser(username, email, password, "User");
+        boolean isRegistered = userService.registerUser(username, email, password);
         if (isRegistered) {
             System.out.println("Registration successful");
             messageLabel.setText("Registration successful! Please log in.");

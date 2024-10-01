@@ -5,33 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16c8bad4-91be-4403-a7e0-81b357e489fb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univent/MainApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univent/controller/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/Entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MainApp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univent/univent/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univent/univent/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/controller/AddEventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AllEventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/controller/AllEventsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/controller/BaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/controller/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LandingPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/controller/LandingPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SignInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/controller/SignInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SignUpController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/test.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univent/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univent/controller/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/controller/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univent/controller/LandingPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/controller/LandingPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univent/controller/SignInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/controller/SignInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univent/controller/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/controller/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univent/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/services/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/services/EventService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univent/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/AddEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/AddEvent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/AllEvents.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/AllEvents.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/Dashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/LandingPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/LandingPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/Profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/Profile.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/SignIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/SignIn.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/SignUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/SignUp.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,10 +58,13 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/Univent/univent&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
   <component name="RecentsManager">

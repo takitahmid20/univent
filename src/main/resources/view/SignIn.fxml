@@ -29,7 +29,7 @@
         <Text layoutX="621.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="heading-text" text="Sign In" wrappingWidth="305.67236328125" />
 
         <!-- Email Field -->
-        <TextField fx:id="emailField" layoutX="611.0" layoutY="252.0" prefHeight="60.0" prefWidth="650.0" promptText="Email Address" styleClass="input-field" />
+        <TextField fx:id="usernameField" layoutX="611.0" layoutY="252.0" prefHeight="60.0" prefWidth="650.0" promptText="Username" styleClass="input-field" />
 
         <!-- Password Field -->
         <PasswordField fx:id="passwordField" layoutX="611.0" layoutY="332.0" prefHeight="60.0" prefWidth="650.0" promptText="Password" styleClass="input-field" />

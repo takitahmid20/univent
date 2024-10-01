@@ -10,8 +10,8 @@ import java.sql.SQLException;
 public class UserService {
 
     // Register a new user
-    public boolean registerUser(String username, String email, String password, String user) {
-        String sql = "INSERT INTO users (username, email, password, user_role) VALUES (?, ?, ?, ?)";
+    public boolean registerUser(String username, String email, String password) {
+        String sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
 
         try (Connection conn = Database.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

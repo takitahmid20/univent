@@ -21,7 +21,7 @@ public class LandingPageController extends BaseController {
         System.out.println("Sign Up Button Clicked");
         // Switch to SignUp scene
         Stage stage = (Stage) signUpButton.getScene().getWindow();
-        switchToScene("src/main/resources/view/SignUp.fxml", stage);
+        switchToScene("/view/SignUp.fxml", stage);
     }
 
     @FXML

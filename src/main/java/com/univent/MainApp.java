@@ -12,7 +12,7 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
         try {
             // Load the SignUp.fxml file
-            Parent root = FXMLLoader.load(getClass().getResource("/view/SignUp.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/view/LandingPage.fxml"));
 
             // Set the title and the scene
             primaryStage.setTitle("Sign Up Form");
