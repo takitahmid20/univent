@@ -45,13 +45,18 @@
         <Label fx:id="messageLabel" layoutX="611.0" layoutY="490.0" prefHeight="30.0" prefWidth="650.0" styleClass="message-label" />
 
         <!-- Don't have an account? Sign Up Label -->
-        <Label fx:id="signUpLabel" layoutX="611.0" layoutY="530.0" prefHeight="30.0" prefWidth="650.0" text="Don't have an account? Sign Up" styleClass="clickable-label" onMouseClicked="#handleSignUpLabelClick" />
+        <Label fx:id="signUpLabel" layoutX="611.0" layoutY="530.0" onMouseClicked="#handleSignUpLabelClick" prefHeight="30.0" prefWidth="650.0" styleClass="clickable-label" text="Don't have an account? Sign Up" />
 
         <!-- Logo Image -->
-        <ImageView fx:id="logoImageView" fitHeight="150.0" fitWidth="200.0" layoutX="1181.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#handleLogoClick">
+        <ImageView fx:id="logoImageView" fitHeight="150.0" fitWidth="200.0" layoutX="1181.0" layoutY="57.0" onMouseClicked="#handleLogoClick" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/logo.png" />
             </image>
         </ImageView>
+      <Button fx:id="adminSignInButton" layoutX="74.0" layoutY="774.0" mnemonicParsing="false" onAction="#handleAdminSignInButton" prefHeight="60.0" prefWidth="210.0" styleClass="button" text="Admin Dashboard">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

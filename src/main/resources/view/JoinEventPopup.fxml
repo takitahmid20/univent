@@ -50,6 +50,6 @@
         </items>
     </ComboBox>
 
-    <!-- Register Button -->
+    <!-- Register Button -->a
     <Button fx:id="registerButton" layoutX="200.0" layoutY="320.0" onAction="#handleRegisterButtonClick" text="Register" styleClass="register-button" />
 </AnchorPane>

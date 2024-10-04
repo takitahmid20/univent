@@ -1,14 +1,17 @@
 package com.univent.services;
 
 import com.univent.Entity.Registration;
+import com.univent.Entity.Attendee;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import database.Database;
 
 public class RegistrationService {
-
-
 
     public boolean registerUser(int eventId, String name, String email, String mobileNumber, String university, int seat) {
         if (eventId <= 0) {
@@ -36,4 +39,7 @@ public class RegistrationService {
             return false;
         }
     }
+
+
+
 }

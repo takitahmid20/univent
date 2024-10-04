@@ -1,0 +1,53 @@
+/* Background Image Styling */
+#backgroundImage {
+    -fx-opacity: 0.7; /* Reduce opacity for a dimmed background */
+}
+
+/* Login Container Styling */
+.login-container {
+    -fx-background-color: rgba(255, 255, 255, 0.9); /* White background with slight transparency */
+    -fx-padding: 30px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0.1, 0, 4);
+    -fx-alignment: center;
+}
+
+/* Login Title Styling */
+.login-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Dark grey color */
+}
+
+/* Input Field Styling */
+.input-field {
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-background-color: #ffffff;
+}
+
+/* Login Button Styling */
+.login-button {
+    -fx-background-color: #FFA726; /* Orange color for brand */
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.login-button:hover {
+    -fx-background-color: #e59422; /* Darker shade on hover */
+}
+
+/* Error Message Styling */
+.error-message {
+    -fx-text-fill: red;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}

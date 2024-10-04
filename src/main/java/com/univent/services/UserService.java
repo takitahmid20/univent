@@ -232,4 +232,21 @@ public class UserService {
             return false;
         }
     }
+
+    public int getTotalUsers() {
+        String sql = "SELECT COUNT(*) FROM users";
+        try (Connection conn = Database.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error fetching total users: " + e.getMessage());
+        }
+        return 0;
     }
+
+
+
+}

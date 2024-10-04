@@ -1,0 +1,187 @@
+/* General container styling */
+.root {
+    -fx-background-color: #f4f4f4; /* Light grey background for the entire page */
+    -fx-padding: 20px;
+}
+
+/* Top Navigation Bar Styling */
+.navbar {
+    -fx-background-color: #161721; /* Dark background for navbar */
+    -fx-padding: 20px;
+    -fx-alignment: center-left;
+}
+
+.nav-item {
+    -fx-font-size: 16px;
+    -fx-text-fill: #ffffff; /* White text for navbar items */
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+}
+
+.nav-item:hover {
+    -fx-text-fill: #FFA726; /* Highlight on hover */
+}
+
+.logout-button {
+    -fx-background-color: #FF7043; /* Coral color for logout button */
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 15px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-background-color: #FF5722; /* Darker shade for hover effect */
+}
+
+/* Content Area Styling */
+.content-area {
+    -fx-padding: 20px;
+}
+
+/* Attendees Container Styling */
+.attendees-container {
+    -fx-padding: 20px;
+    -fx-spacing: 20px;
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0.1, 0, 4);
+}
+
+/* Page Title Styling */
+.page-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #424242;
+    -fx-padding: 0 0 20px 0;
+}
+
+/* Attendee Box Styling */
+.attendee-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e0e0e0; /* Light border for attendee box */
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 15px;
+    -fx-alignment: center-left;
+    -fx-spacing: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 5, 0.1, 0, 2);
+}
+
+/* Attendee Info Labels Styling */
+.attendee-event, .attendee-name, .attendee-email, .attendee-phone, .attendee-university {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+/* Default Button Style */
+.check-in-button, .check-out-button {
+    -fx-border-color: blue;
+    -fx-border-width: 2px;
+    -fx-background-color: transparent;
+    -fx-text-fill: blue;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+/* Hover State */
+.check-in-button:hover, .check-out-button:hover {
+    -fx-background-color: lightblue;
+}
+
+/* Clicked State */
+.check-in-button.clicked {
+    -fx-background-color: green;
+    -fx-text-fill: white;
+    -fx-border-color: green;
+}
+
+.check-out-button.clicked {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+    -fx-border-color: red;
+}
+
+
+/* ScrollPane Styling */
+.attendees-scroll-pane {
+    -fx-padding: 20px;
+    -fx-hbar-policy: never; /* Disable horizontal scrolling */
+    -fx-vbar-policy: as-needed; /* Show vertical scrollbar as needed */
+}
+
+/* General ComboBox Styling */
+.combo-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #0078D4; /* Blue border color */
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Dark grey text color */
+    -fx-cursor: hand;
+}
+
+.combo-box:hover {
+    -fx-border-color: #005A9E; /* Darker blue border color on hover */
+}
+
+.combo-box:focused {
+    -fx-border-color: #1A73E8; /* Light blue border color when focused */
+    -fx-background-color: #f4f9ff; /* Light blue background when focused */
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: #0078D4; /* Blue color for dropdown arrow button */
+    -fx-padding: 3px;
+    -fx-border-radius: 0 5px 5px 0;
+}
+
+.combo-box .arrow-button:hover {
+    -fx-background-color: #005A9E; /* Darker blue color for dropdown arrow button on hover */
+}
+
+.combo-box .arrow {
+    -fx-shape: "M 0 0 L 5 5 L 10 0 Z"; /* Triangle shape */
+    -fx-size: 8px;
+    -fx-fill: #ffffff; /* White color for arrow */
+}
+
+/* Dropdown List Styling */
+.combo-box .list-view {
+    -fx-background-color: #ffffff;
+    -fx-padding: 5px;
+    -fx-border-color: #0078D4;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0078D4;
+    -fx-background-color: #ffffff;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #f0f0f0; /* Light grey background for list item hover */
+}
+
+.combo-box .list-cell:selected {
+    -fx-background-color: #0078D4; /* Blue background for selected list item */
+    -fx-text-fill: #ffffff; /* White text for selected item */
+}
+
+.combo-box:disabled {
+    -fx-opacity: 0.7; /* Make it slightly transparent when disabled */
+    -fx-border-color: #b0b0b0; /* Grey border for disabled state */
+}
+

@@ -2,6 +2,7 @@ package com.univent.controller;
 
 import com.univent.Entity.User;
 import com.univent.services.UserService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -30,6 +31,9 @@ public class SignInController {
 
     @FXML
     private ImageView logoImageView;
+
+    @FXML
+    private Button adminSignInButton;
 
     private UserService userService = new UserService();
 
@@ -114,6 +118,26 @@ public class SignInController {
         }
     }
 
+    public void handleAdminSignInButton() {
+        try {
+            // Load the SignUp.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AdminLogin.fxml"));
+            AnchorPane pane = loader.load();
+
+            // Get the current stage
+            Stage stage = (Stage) adminSignInButton.getScene().getWindow();
+
+            // Set the new scene
+            Scene scene = new Scene(pane);
+            stage.setScene(scene);
+            stage.setTitle("Admin Sign In");
+        } catch (IOException e) {
+            e.printStackTrace();
+            messageLabel.setText("Error loading Admin Sign In page.");
+            messageLabel.setStyle("-fx-text-fill: red;");
+        }
+    }
+
     @FXML
     private void handleLogoClick() {
         System.out.println("Logo clicked, navigating to landing page.");
@@ -129,4 +153,6 @@ public class SignInController {
             System.out.println("Error loading LandingPage.fxml: " + e.getMessage());
         }
     }
+
+
 }

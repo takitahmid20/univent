@@ -173,4 +173,75 @@ public class EventService {
         return events;
     }
 
+    public int getTotalEvents() {
+        String sql = "SELECT COUNT(*) FROM events";
+        try (Connection conn = Database.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error fetching total events: " + e.getMessage());
+        }
+        return 0;
+    }
+
+    public int getTotalRegistrations() {
+        String sql = "SELECT COUNT(*) FROM registrations";
+        try (Connection conn = Database.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error fetching total registrations: " + e.getMessage());
+        }
+        return 0;
+    }
+
+    public List<Event> getUpcomingEvents() {
+        List<Event> events = new ArrayList<>();
+        String sql = "SELECT * FROM events WHERE start_date >= CURRENT_DATE ORDER BY start_date ASC";
+        try (Connection conn = Database.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+                Event event = new Event();
+                event.setId(rs.getInt("id"));
+                event.setTitle(rs.getString("title"));
+                event.setStartDate(rs.getString("start_date"));
+                event.setAuthorName(rs.getString("author_name"));
+                events.add(event);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error fetching upcoming events: " + e.getMessage());
+        }
+        return events;
+    }
+
+    public String getEventNameById(int eventId) {
+        String sql = "SELECT title FROM events WHERE id = ?";
+        String eventName = null;
+
+        try (Connection conn = Database.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, eventId);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                eventName = rs.getString("title");
+            }
+        } catch (SQLException e) {
+            System.err.println("Database query error while fetching event name: " + e.getMessage());
+        }
+
+        return eventName;
+    }
+
+
+
+
 }

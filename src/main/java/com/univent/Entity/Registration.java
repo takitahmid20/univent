@@ -79,4 +79,5 @@ public class Registration {
     public void setSeat(int seat) {
         this.seat = seat;
     }
+
 }

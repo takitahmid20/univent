@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane hbarPolicy="NEVER" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.AdminAllEventsController">
+   <content>
+      <AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/admin-all-events.css">
+      
+          <!-- Main Content Area -->
+          <AnchorPane fx:id="contentArea" layoutY="80.0" prefHeight="720.0" prefWidth="1200.0" styleClass="content-area" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+      
+                    <!-- Event Boxes Container -->
+              <FlowPane fx:id="eventsFlowPane" hgap="20.0" layoutX="20.0" layoutY="60.0" prefHeight="650.0" prefWidth="1160.0" vgap="20.0">
+                  <!-- Example Event Box -->
+                  <VBox fx:id="eventBox" alignment="CENTER" prefHeight="350.0" prefWidth="300.0" styleClass="event-box">
+                      <ImageView fx:id="eventImage" fitHeight="150.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/banner.jpg" />
+                          </image>
+                      </ImageView>
+                      <Label fx:id="eventTitle" styleClass="event-title" text="Event Title" />
+                      <Label fx:id="eventOrganizer" styleClass="event-organizer" text="Organizer: Example Organizer" />
+                      <Label fx:id="eventDate" styleClass="event-date" text="Date: March 10, 2024" />
+      
+                            <HBox alignment="CENTER" spacing="10.0">
+                          <Button fx:id="editButton" onAction="#handleEditButtonClick" styleClass="edit-button" text="Edit" />
+                          <Button fx:id="deleteButton" onAction="#handleDeleteButtonClick" styleClass="delete-button" text="Delete" />
+                          <Button fx:id="attendeesButton" onAction="#handleAttendeesButtonClick" styleClass="attendees-button" text="Attendees" />
+                      </HBox>
+                  </VBox>
+                  <!-- Additional event boxes will be dynamically added here -->
+              </FlowPane>
+          </AnchorPane>
+   
+              <!-- Title Section -->
+           <Label layoutX="28.0" layoutY="56.0" styleClass="section-title" text="All Events" />
+      
+      </AnchorPane>
+   </content>
+</ScrollPane>
