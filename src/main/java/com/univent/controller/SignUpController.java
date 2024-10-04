@@ -3,10 +3,8 @@ package com.univent.controller;
 import com.univent.services.UserService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -37,29 +35,49 @@ public class SignUpController {
     @FXML
     private Label signInLabel;
 
+    @FXML
+    private ImageView logoImageView;
+
     private final UserService userService = new UserService();
-
-//    @FXML
-//    public void initialize() {
-//        System.out.println("SignUpController initialized");
-//        System.out.println("Is signUpButton disabled? " + signUpButton.isDisable());
-//        signUpButton.setOnAction(event -> handleSignUpButton());
-//
-//    }
-
 
     @FXML
     public void handleSignUpButton() {
         System.out.println("Sign Up Button Clicked");
 
-        String username = usernameField.getText();
-        String email = emailField.getText();
-        String password = passwordField.getText();
+        String username = usernameField.getText().trim();
+        String email = emailField.getText().trim();
+        String password = passwordField.getText().trim();
 
         // Validate all fields
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            System.out.println("Validation failed: empty fields detected");
             messageLabel.setText("Please fill in all fields.");
+            messageLabel.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        // Validate email format
+        if (!isValidEmail(email)) {
+            messageLabel.setText("Please enter a valid email address.");
+            messageLabel.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        // Validate password strength
+        if (password.length() < 6) {
+            messageLabel.setText("Password must be at least 6 characters long.");
+            messageLabel.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        // Check if username or email already exists
+        if (userService.isUsernameTaken(username)) {
+            messageLabel.setText("Username already exists. Please choose another.");
+            messageLabel.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        if (userService.isEmailTaken(email)) {
+            messageLabel.setText("An account with this email already exists. Please use a different email.");
             messageLabel.setStyle("-fx-text-fill: red;");
             return;
         }
@@ -74,8 +92,8 @@ public class SignUpController {
             // Switch to the SignIn page after successful registration
             switchToSignInPage();
         } else {
-            System.out.println("Username already exists");
-            messageLabel.setText("Username already exists. Please choose another.");
+            System.out.println("Registration failed");
+            messageLabel.setText("Registration failed. Please try again later.");
             messageLabel.setStyle("-fx-text-fill: red;");
         }
     }
@@ -84,6 +102,22 @@ public class SignUpController {
     public void handleSignInLabelClick(MouseEvent event) {
         System.out.println("Sign In Label Clicked");
         switchToSignInPage();
+    }
+
+    @FXML
+    private void handleLogoClick() {
+        System.out.println("Logo clicked, navigating to landing page.");
+
+        try {
+            // Load the landing page FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LandingPage.fxml"));
+            ScrollPane pane = loader.load();
+            Stage stage = (Stage) logoImageView.getScene().getWindow();
+            stage.getScene().setRoot(pane);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error loading LandingPage.fxml: " + e.getMessage());
+        }
     }
 
     private void switchToSignInPage() {
@@ -96,5 +130,11 @@ public class SignUpController {
             logger.log(Level.SEVERE, "An error occurred while switching to the SignIn scene", e);
             System.out.println("Error: " + e.getMessage());
         }
+    }
+
+    // Utility method to validate email format
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        return email.matches(emailRegex);
     }
 }

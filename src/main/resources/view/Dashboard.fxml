@@ -5,27 +5,68 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.DashboardController">
 
     <!-- Sidebar for Navigation -->
     <VBox fx:id="sidebar" layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="250.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <ImageView fx:id="logo" fitHeight="33.0" fitWidth="174.0" layoutX="25.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="logo" fitHeight="50.0" fitWidth="150.0" layoutX="25.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/logo.png" />
             </image>
         </ImageView>
         <Label onMouseClicked="#handleDashboardClick" styleClass="nav-item" text="Dashboard" />
-        <Label onMouseClicked="#handleAllEventsClick" styleClass="nav-item" text="All Events" />
+        <Label fx:id="allEventsLabel" onMouseClicked="#handleAllEventsClick" styleClass="nav-item" text="All Events" />
         <Label onMouseClicked="#handleAddEventClick" styleClass="nav-item" text="Add Event" />
         <Label onMouseClicked="#handleProfileClick" styleClass="nav-item" text="Profile" />
-        <Button fx:id="addEventButton" onAction="#handleAddEventButtonClick" styleClass="add-event-button" text="Add Event" />
+        <Button fx:id="logoutButton" onAction="#handleLogoutButtonClick" styleClass="logout-button" text="Logout" />
     </VBox>
 
-       <!-- Main Content Area -->
-    <AnchorPane fx:id="contentArea" layoutX="250.0" layoutY="0.0" prefHeight="800.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <!-- Specific content page will be loaded here -->
+    <!-- Main Content Area -->
+    <AnchorPane fx:id="contentArea" layoutX="250.0" prefHeight="800.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox layoutX="20.0" layoutY="20.0" prefWidth="910.0" spacing="20.0">
+
+            <!-- Dashboard Title and Create Event Button -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                <Label styleClass="dashboard-title" text="Dashboard" />
+      
+              <!-- Username Label at the bottom of the sidebar -->
+              <Label fx:id="usernameLabel" alignment="CENTER" prefHeight="40.0" prefWidth="260.0" styleClass="username-label" />
+            </HBox>
+
+            <!-- Summary Cards -->
+            <HBox spacing="20.0">
+
+                <!-- Card 1: Events Created -->
+                <VBox fx:id="eventsCreatedBox" prefHeight="150.0" prefWidth="270.0" styleClass="summary-card">
+                    <Label fx:id="eventsCreatedLabel" styleClass="card-title" text="Events Created" />
+                    <Label fx:id="eventsCreatedNumber" styleClass="card-value" text="5" />
+                </VBox>
+
+                <!-- Card 2: Events Joined -->
+                <VBox fx:id="eventsJoinedBox" prefHeight="150.0" prefWidth="270.0" styleClass="summary-card">
+                    <Label fx:id="eventsJoinedLabel" styleClass="card-title" text="Events Joined" />
+                    <Label fx:id="eventsJoinedNumber" styleClass="card-value" text="3" />
+                </VBox>
+
+                <!-- Card 3: Upcoming Event -->
+                <VBox fx:id="upcomingEventBox" prefHeight="150.0" prefWidth="270.0" styleClass="summary-card">
+                    <Label fx:id="upcomingEventLabel" styleClass="card-title" text="Upcoming Event" />
+                    <Label fx:id="upcomingEventName" styleClass="card-value" text="Tech Meetup 2024" />
+                </VBox>
+
+            </HBox>
+
+            <!-- Additional Content (e.g., Graphs or Latest Updates) -->
+            <GridPane fx:id="additionalContent" hgap="20.0" layoutY="200.0" styleClass="content-grid" vgap="20.0">
+                <!-- Additional content can be added here, such as a graph, list of recent transactions, etc. -->
+            </GridPane>
+
+        </VBox>
+        <Button fx:id="createEventButton" layoutX="752.0" layoutY="20.0" onMouseClicked="#handleCreateEventButtonClick" prefHeight="38.0" prefWidth="156.0" styleClass="create-event-button" text="+ Create Event" />
     </AnchorPane>
 
 </AnchorPane>

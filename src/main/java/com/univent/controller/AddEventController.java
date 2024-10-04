@@ -1,68 +1,169 @@
 package com.univent.controller;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import com.univent.services.EventService;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
-public class AddEventController extends BaseController {
+import java.io.File;
+
+public class AddEventController {
 
     @FXML
-    private TextField eventNameField;
-
+    private TextField eventTitleField;
+    @FXML
+    private TextArea eventDescriptionField;
     @FXML
     private TextField eventLocationField;
-
     @FXML
-    private TextField eventDateField;
-
+    private DatePicker startDatePicker;
     @FXML
-    private Button saveEventButton;
+    private TextField startTimeField;
+    @FXML
+    private DatePicker endDatePicker;
+    @FXML
+    private TextField endTimeField;
+    @FXML
+    private TextField organizerNameField;
+    @FXML
+    private ComboBox<String> eventCategoryComboBox;
+    @FXML
+    private TextField priceField;
+    @FXML
+    private Label featureImageLabel;
+    @FXML
+    private Label organizerLogoLabel;
+
+    private File featureImageFile;
+    private File organizerLogoFile;
 
     private EventService eventService = new EventService();
-    private DashboardController dashboardController;
 
-    public void setDashboardController(DashboardController dashboardController) {
-        this.dashboardController = dashboardController;
+    // Add a field to store the logged-in username
+    private String loggedInUsername;
+
+    // Set the logged-in username
+//    public void setLoggedInUsername(String username) {
+//        this.loggedInUsername = username;
+//        System.out.println("Logged in username set to: " + this.loggedInUsername); // Debugging line to ensure it is set correctly
+//    }
+
+    @FXML
+    private void handleImageUploadClick() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Event Feature Image");
+        featureImageFile = fileChooser.showOpenDialog(new Stage());
+
+        if (featureImageFile != null) {
+            featureImageLabel.setText(featureImageFile.getName());
+        }
     }
 
     @FXML
-    public void handleSaveEventButtonClick() {
-        String eventName = eventNameField.getText();
-        String eventLocation = eventLocationField.getText();
-        String eventDate = eventDateField.getText();
+    private void handleLogoUploadClick() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Organizer Logo");
+        organizerLogoFile = fileChooser.showOpenDialog(new Stage());
 
-        if (eventName.isEmpty() || eventLocation.isEmpty() || eventDate.isEmpty()) {
-            System.out.println("All fields must be filled out");
+        if (organizerLogoFile != null) {
+            organizerLogoLabel.setText(organizerLogoFile.getName());
+        }
+    }
+
+    public void setLoggedInUsername(String username) {
+        this.loggedInUsername = username;
+        System.out.println("Logged in username set to: " + this.loggedInUsername); // Debugging line to ensure it is set correctly
+    }
+
+    @FXML
+    private void handleCreateEventClick() {
+        // Check if loggedInUsername is correctly set
+        if (loggedInUsername == null) {
+            System.err.println("Error: loggedInUsername is null when creating the event");
             return;
         }
 
-        boolean isSaved = eventService.addEvent(eventName, eventLocation, eventDate);
-        if (isSaved) {
-            System.out.println("Event successfully saved");
-        } else {
-            System.out.println("Failed to save the event");
+        // Validate the form
+        if (eventTitleField.getText().isEmpty() ||
+                eventDescriptionField.getText().isEmpty() ||
+                eventLocationField.getText().isEmpty() ||
+                startDatePicker.getValue() == null ||
+                startTimeField.getText().isEmpty() ||
+                endDatePicker.getValue() == null ||
+                endTimeField.getText().isEmpty() ||
+                organizerNameField.getText().isEmpty() ||
+                eventCategoryComboBox.getValue() == null ||
+                priceField.getText().isEmpty()) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in all the required fields.");
+            alert.showAndWait();
+            return;
         }
+
+        // Validate price input
+        double price;
+        try {
+            price = Double.parseDouble(priceField.getText());
+            if (price < 0) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Price must be a valid non-negative number.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Call the service to create the event
+        eventService.createEvent(
+                eventTitleField.getText(),
+                eventDescriptionField.getText(),
+                featureImageFile,
+                eventLocationField.getText(),
+                startDatePicker.getValue().toString(),
+                startTimeField.getText(),
+                endDatePicker.getValue().toString(),
+                endTimeField.getText(),
+                organizerNameField.getText(),
+                organizerLogoFile,
+                eventCategoryComboBox.getValue(),
+                price,
+                loggedInUsername // Pass the logged-in username as the author name
+        );
+
+        // Show success alert
+        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+        successAlert.setTitle("Success");
+        successAlert.setHeaderText(null);
+        successAlert.setContentText("Event has been successfully created!");
+        successAlert.showAndWait();
+
+        // Clear form fields after successful creation
+        clearFormFields();
     }
 
-    @FXML
-    public void handleDashboardClick() {
-        if (dashboardController != null) {
-            dashboardController.handleDashboardClick();
-        }
+    // Method to clear form fields after creating an event
+    private void clearFormFields() {
+        eventTitleField.clear();
+        eventDescriptionField.clear();
+        eventLocationField.clear();
+        startDatePicker.setValue(null);
+        startTimeField.clear();
+        endDatePicker.setValue(null);
+        endTimeField.clear();
+        organizerNameField.clear();
+        eventCategoryComboBox.setValue(null);
+        priceField.clear();
+        featureImageLabel.setText("No file chosen");
+        organizerLogoLabel.setText("No file chosen");
+        featureImageFile = null;
+        organizerLogoFile = null;
     }
 
-    @FXML
-    public void handleAllEventsClick() {
-        if (dashboardController != null) {
-            dashboardController.handleAllEventsClick();
-        }
-    }
-
-    @FXML
-    public void handleProfileClick() {
-        if (dashboardController != null) {
-            dashboardController.handleProfileClick();
-        }
-    }
 }

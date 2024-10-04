@@ -1,122 +1,128 @@
-/* General Container Styles */
-.anchor-pane {
-    -fx-background-color: #f4f4f4;
+/* General styling for the form container */
+.add-event-container {
+    -fx-padding: 30px;
+    -fx-background-color: #f4f4f4; /* Light gray background */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-spacing: 15px;
 }
 
-/* Sidebar Styles */
-.sidebar {
-    -fx-background-color: #333333;
-    -fx-padding: 20;
-    -fx-spacing: 15;
-}
-
-.nav-item {
-    -fx-font-size: 18px;
-    -fx-text-fill: #ffffff;
-    -fx-padding: 10;
-    -fx-cursor: hand;
-}
-
-.nav-item:hover {
-    -fx-background-color: #444444;
-    -fx-border-radius: 5;
-    -fx-padding: 10;
-}
-
-.add-event-button {
-    -fx-background-color: #ff7a5a;
-    -fx-text-fill: #ffffff;
+/* Label styling */
+.label {
     -fx-font-size: 16px;
-    -fx-border-radius: 10;
-    -fx-padding: 10;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Dark gray text color */
 }
 
-.add-event-button:hover {
-    -fx-background-color: #e06950;
+/* Input fields styling */
+.text-field, .text-area, .combo-box, .date-picker {
+    -fx-background-color: #ffffff; /* White background for input fields */
+    -fx-background-radius: 8px;
+    -fx-border-color: #cccccc; /* Light gray border */
+    -fx-border-radius: 8px;
+    -fx-padding: 10px; /* Padding inside the input fields */
+    -fx-font-size: 14px;
 }
 
-/* Content Area General Styling */
-.content-area {
-    -fx-padding: 30;
+/* Description area styling */
+.text-area {
+    -fx-pref-height: 100px; /* Make the text area larger */
 }
 
-/* Heading Styles */
-.heading {
+/* File upload button styling */
+.file-upload-button {
+    -fx-background-color: #ff7a5a; /* Coral button color */
+    -fx-text-fill: #ffffff; /* White text color */
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px 20px; /* Padding for a more clickable button */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Hover effect for file upload button */
+.file-upload-button:hover {
+    -fx-background-color: #e66a4a; /* Darker coral when hovered */
+}
+
+/* Dropdown styling (Category) */
+.combo-box {
+    -fx-pref-width: 200px;
+    -fx-font-size: 14px;
+}
+
+/* Date picker styling */
+.date-picker {
+    -fx-pref-width: 200px;
+}
+
+/* Price field styling */
+.price-field {
+    -fx-pref-width: 150px;
+}
+
+/* Submit button styling */
+.submit-button {
+    -fx-background-color: #4CAF50; /* Green button color for submitting */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 12px 24px;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand; /* Pointer cursor for better UX */
+}
+
+/* Submit button hover effect */
+.submit-button:hover {
+    -fx-background-color: #43a047; /* Darker green when hovered */
+}
+
+/* Cancel button styling */
+.cancel-button {
+    -fx-background-color: #f44336; /* Red button color for canceling */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 12px 24px;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand; /* Pointer cursor for better UX */
+}
+
+/* Cancel button hover effect */
+.cancel-button:hover {
+    -fx-background-color: #d32f2f; /* Darker red when hovered */
+}
+
+/* Form layout styling */
+.form-layout {
+    -fx-spacing: 15px; /* Space between form elements */
+    -fx-alignment: top-left;
+}
+
+/* Title styling */
+.add-event-title {
     -fx-font-size: 24px;
     -fx-font-weight: bold;
-    -fx-text-fill: #333333;
-    -fx-padding: 10 0;
+    -fx-text-fill: #333333; /* Dark gray */
+    -fx-padding: 10px 0; /* Space at the top and bottom */
 }
 
-/* Input Field Styles */
-.input-field {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #9a9a9a;
-    -fx-border-radius: 5;
-    -fx-padding: 10;
-    -fx-font-size: 16px;
-    -fx-pref-width: 400px;
+/* Styling for HBox container for buttons (submit, cancel) */
+.button-container {
+    -fx-spacing: 20px;
+    -fx-alignment: center-right;
+    -fx-padding: 20px 0 0 0;
 }
 
-/* Save Event Button Styles */
-.save-event-button {
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 18px;
-    -fx-border-radius: 5;
-    -fx-padding: 10;
-    -fx-cursor: hand;
-}
-
-.save-event-button:hover {
-    -fx-background-color: #45a049;
-}
-
-/* Join Now Button */
-.join-now-button {
-    -fx-background-color: #ff7a5a;
-    -fx-text-fill: white;
-    -fx-border-radius: 5;
-    -fx-font-size: 16px;
-}
-
-.join-now-button:hover {
-    -fx-background-color: #e06950;
-}
-
-
-
-/* General Container Styles */
-.add-event-section {
-    -fx-background-color: #ffffff;
-    -fx-padding: 20;
-    -fx-spacing: 15;
-}
-
-.heading {
-    -fx-font-size: 28px;
-    -fx-text-fill: #444444;
+/* Styling for error and success messages */
+.message-label {
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
+    -fx-text-fill: #ff0000; /* Default color is red for errors */
 }
 
-/* Input Fields */
-.input-field {
-    -fx-background-color: #f4f4f4;
-    -fx-padding: 10;
-    -fx-border-color: #dcdcdc;
-    -fx-border-radius: 5;
-    -fx-font-size: 16px;
-}
-
-/* Add Event Button */
-.add-event-button {
-    -fx-background-color: #ff7a5a;
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 16px;
-    -fx-border-radius: 10;
-    -fx-padding: 10;
-}
-
-.add-event-button:hover {
-    -fx-background-color: #e06950;
+.message-label.success {
+    -fx-text-fill: #4CAF50; /* Green color for success messages */
 }

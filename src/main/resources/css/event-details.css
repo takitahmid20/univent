@@ -1,0 +1,72 @@
+/* event_details.css */
+
+/* General Styling for Event Details Page */
+.root {
+    -fx-padding: 20px;
+    -fx-background-color: #f9f9f9;
+    -fx-font-family: "Arial";
+}
+
+/* Event Image Styling */
+#eventImageView {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0.2, 0, 0);
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+/* Event Title Label Styling */
+#eventTitleLabel {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Use your brand color */
+}
+
+/* Location, Date, Time, Price, Organizer Labels Styling */
+#eventLocationLabel,
+#eventDateLabel,
+#eventTimeLabel,
+#eventPriceLabel,
+#organizerNameLabel {
+    -fx-font-size: 16px;
+    -fx-text-fill: #d36709;
+    -fx-padding: 5px 0;
+}
+#ruler{
+    -fx-background-color: #d9d9d9;
+}
+
+/* Event Description Styling */
+#eventDescriptionLabel {
+    -fx-font-size: 14px;
+    -fx-text-fill: #444444;
+    -fx-padding: 20px 0;
+    -fx-wrap-text: true;
+}
+
+/* Join Now Button Styling */
+.button {
+    -fx-background-color: #FF5722; /* Use your brand color */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-border-radius: 5px;
+}
+
+/* Button Hover Effect */
+.button:hover {
+    -fx-background-color: #E64A19; /* Darker shade for hover effect */
+}
+
+/* General Padding and Spacing */
+.label {
+    -fx-padding: 5px 0;
+}
+
+/* Container Styling */
+.anchor-pane {
+    -fx-padding: 20px;
+    -fx-border-width: 1px;
+    -fx-border-color: #d1d1d1;
+    -fx-border-radius: 10px;
+}

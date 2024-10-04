@@ -1,54 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/profile.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.ProfileController">
+<?import java.lang.String?>
+<AnchorPane prefHeight="947.0" prefWidth="800.0" stylesheets="@../css/profile.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.ProfileController">
 
-    <!-- Sidebar for Navigation -->
-    <VBox fx:id="sidebar" layoutX="-2.0" prefHeight="800.0" prefWidth="212.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="0.0">
-        <Label onMouseClicked="#handleDashboardClick" styleClass="nav-item" text="Dashboard" />
-        <Label onMouseClicked="#handleAllEventsClick" styleClass="nav-item" text="All Events" />
-        <Label onMouseClicked="#handleAddEventClick" styleClass="nav-item" text="Add Event" />
-        <Label onMouseClicked="#handleProfileClick" styleClass="nav-item" text="Profile" />
-        <Button fx:id="addEventButton" onAction="#handleAddEventButtonClick" styleClass="add-event-button" text="Add Event" />
-    </VBox>
+    <!-- Title -->
+    <Label layoutX="20.0" layoutY="20.0" styleClass="form-title" text="User Profile" />
 
-    <!-- Main Content Area -->
-    <AnchorPane fx:id="contentArea" layoutX="214.0" layoutY="22.0" prefWidth="986.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <!-- Profile Fields -->
+    <Label layoutX="20.0" layoutY="80.0" text="Username" />
+    <TextField fx:id="usernameField" layoutX="200.0" layoutY="80.0" prefWidth="400.0" editable="false" styleClass="profile-field" />
 
-        <!-- Profile Details Section -->
-        <Label layoutX="30.0" layoutY="30.0" styleClass="heading" text="Profile Details" />
+    <Label layoutX="20.0" layoutY="130.0" text="Email" />
+    <TextField fx:id="emailField" layoutX="200.0" layoutY="130.0" prefWidth="400.0" editable="false" styleClass="profile-field" />
 
-        <!-- Username Field -->
-        <Label layoutX="30.0" layoutY="90.0" styleClass="label-text" text="Username:" />
-        <TextField fx:id="usernameField" layoutX="150.0" layoutY="85.0" prefWidth="400.0" promptText="Enter your username" styleClass="input-field" />
+    <Label layoutX="20.0" layoutY="180.0" text="Password" />
+    <TextField fx:id="passwordField" layoutX="200.0" layoutY="180.0" prefWidth="400.0" promptText="Enter new password" styleClass="profile-field"/>
 
-        <!-- Email Field -->
-        <Label layoutX="30.0" layoutY="150.0" styleClass="label-text" text="Email Address:" />
-        <TextField fx:id="emailField" layoutX="150.0" layoutY="145.0" prefWidth="400.0" promptText="Enter your email address" styleClass="input-field" />
+    <Label layoutX="20.0" layoutY="230.0" text="Full Name" />
+    <TextField fx:id="fullNameField" layoutX="200.0" layoutY="230.0" prefWidth="400.0" styleClass="profile-field" />
 
-        <!-- Password Field -->
-        <Label layoutX="30.0" layoutY="210.0" styleClass="label-text" text="Password:" />
-        <PasswordField fx:id="passwordField" layoutX="150.0" layoutY="205.0" prefWidth="400.0" promptText="Enter your password" styleClass="input-field" />
+    <!-- Profile Picture Upload -->
+    <Label layoutX="20.0" layoutY="280.0" text="Profile Picture" />
+    <Button fx:id="profilePictureButton" layoutX="200.0" layoutY="280.0" onAction="#handleProfilePictureUploadClick" text="Upload Profile Picture" styleClass="upload-button"/>
+    <Label fx:id="profilePictureLabel" layoutX="350.0" layoutY="285.0" text="No file chosen" />
+    <ImageView fx:id="profileImageView" layoutX="620.0" layoutY="230.0" fitHeight="100.0" fitWidth="100.0" />
 
-        <!-- Save Changes Button -->
-        <Button fx:id="saveProfileButton" layoutX="150.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleSaveProfileButtonClick" prefHeight="40.0" prefWidth="200.0" styleClass="save-event-button" text="Save Changes" />
+    <!-- NID Card Uploads -->
+    <Label layoutX="20.0" layoutY="330.0" text="NID Card (Front Side)" />
+    <Button fx:id="nidFrontButton" layoutX="200.0" layoutY="330.0" onAction="#handleNIDFrontUploadClick" text="Upload Front Side" styleClass="upload-button"/>
+    <Label fx:id="nidFrontLabel" layoutX="350.0" layoutY="335.0" text="No file chosen" />
 
-        <!-- Profile Picture Section -->
-        <Label layoutX="600.0" layoutY="90.0" styleClass="label-text" text="Profile Picture:" />
-        <ImageView fx:id="profileImageView" fitHeight="150.0" fitWidth="150.0" layoutX="720.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/profile-placeholder.png" />
-            </image>
-        </ImageView>
-        <Button fx:id="uploadProfilePicButton" layoutX="608.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleUploadProfilePicClick" styleClass="button" text="Upload New Picture" />
+    <Label layoutX="20.0" layoutY="380.0" text="NID Card (Back Side)" />
+    <Button fx:id="nidBackButton" layoutX="200.0" layoutY="380.0" onAction="#handleNIDBackUploadClick" text="Upload Back Side" styleClass="upload-button"/>
+    <Label fx:id="nidBackLabel" layoutX="350.0" layoutY="385.0" text="No file chosen" />
 
-    </AnchorPane>
+    <!-- University Name Selection -->
+    <Label layoutX="20.0" layoutY="430.0" text="University Name" />
+    <ComboBox fx:id="universityComboBox" layoutX="200.0" layoutY="430.0" prefWidth="400.0" styleClass="profile-field">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Ahsanullah University of Science and Technology" />
+                <String fx:value="Bangladesh University of Engineering and Technology (BUET)" />
+                <String fx:value="Dhaka University" />
+                <String fx:value="Jahangirnagar University" />
+                <!-- Add more universities in alphabetical order -->
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <!-- Bio -->
+    <Label layoutX="20.0" layoutY="480.0" text="Bio" />
+    <TextArea fx:id="bioField" layoutX="200.0" layoutY="480.0" prefHeight="100.0" prefWidth="400.0" styleClass="profile-field" />
+
+    <!-- Address -->
+    <Label layoutX="20.0" layoutY="600.0" text="Address" />
+    <TextField fx:id="addressField" layoutX="200.0" layoutY="600.0" prefWidth="400.0" styleClass="profile-field" />
+
+    <!-- Mobile Number -->
+    <Label layoutX="20.0" layoutY="650.0" text="Mobile Number" />
+    <TextField fx:id="mobileNumberField" layoutX="200.0" layoutY="650.0" prefWidth="400.0" promptText="e.g., +8801XXXXXXXXX" styleClass="profile-field" />
+
+    <!-- Save Changes Button -->
+    <Button layoutX="200.0" layoutY="710.0" fx:id="saveChangesButton" onAction="#handleSaveChangesClick" styleClass="save-changes-button" text="Save Changes" />
 </AnchorPane>

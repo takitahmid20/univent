@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class Database {
 
-    private static final String URL = "jdbc:mysql://sql.freedb.tech:3306/freedb_univent_db";
-    private static final String USER = "freedb_univent";
-    private static final String PASSWORD = "pSg?DKZ4cf7ew5%";
+    private static final String URL = "jdbc:mysql://sql.localhost:8889/univent_db";
+    private static final String USER = "root";
+    private static final String PASSWORD = "root";
 
     public static Connection connect() {
         Connection conn = null;

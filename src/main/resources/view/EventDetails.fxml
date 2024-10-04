@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane prefHeight="1389.0" prefWidth="1442.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.EventDetailsController">
+   <content>
+      <AnchorPane prefHeight="900.0" prefWidth="1440.0" stylesheets="@../css/event-details.css">
+         <ImageView fx:id="eventImageView" fitHeight="377.0" fitWidth="1388.0" layoutX="18.0" layoutY="16.0" pickOnBounds="true" smooth="false" AnchorPane.leftAnchor="18.0">
+            <image>
+               <Image url="@../../../../../../../../../Users/takitahmid/Downloads/banner.jpg" />
+            </image>
+         </ImageView>
+      
+          <!-- Top Navbar -->
+          <AnchorPane fx:id="navbar" layoutY="23.0" prefHeight="70.0" styleClass="navbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
+              <HBox layoutX="10.0" layoutY="10.0" spacing="30.0">
+      
+                  <!-- Middle - Menu -->
+                  <HBox alignment="CENTER" layoutX="200.0" spacing="30.0" />
+              </HBox>
+              <Label layoutX="843.0" layoutY="17.0" onMouseClicked="#handleAllEventsClick" styleClass="menu-item" text="All Events" textAlignment="CENTER" textFill="#da7f0f">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+              <Label layoutX="741.0" layoutY="16.0" onMouseClicked="#handleAboutUsClick" styleClass="menu-item" text="About Us" textFill="#da7f0f">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+              <Label fx:id="homeLabel" layoutX="663.0" layoutY="15.0" onMouseClicked="#handleHomeClick" styleClass="menu-item" text="Home" textFill="#da7f0f">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+              <!-- Left side - Logo -->
+              <ImageView fx:id="logo" fitHeight="50.0" fitWidth="120.0" layoutX="43.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../images/logo.png" />
+                  </image>
+              </ImageView>
+      
+              <!-- Right Side - Sign Up / Sign In Buttons -->
+              <Button fx:id="signUpButton" layoutX="1276.0" layoutY="15.0" onAction="#handleSignUpButtonClick" styleClass="sign-up-button" text="Sign Up" />
+              <Button fx:id="signInButton" layoutX="1174.0" layoutY="15.0" onAction="#handleSignInButtonClick" styleClass="sign-in-button" text="Sign In" />
+      
+              <!-- Username Button (Visible after login) -->
+              <Button fx:id="usernameButton" layoutX="1299.0" layoutY="15.0" onAction="#handleUsernameButtonClick" styleClass="username-button" text="Username" visible="false" />
+          </AnchorPane>
+      
+          <!-- Event Details -->
+          <VBox layoutX="50.0" layoutY="420.0" spacing="20.0">
+              <!-- Event Title and Location -->
+              <Label fx:id="eventTitleLabel" styleClass="event-title" text="Title of the Event">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+              <HBox spacing="10.0">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@../images/location-icon.png" />
+                      </image>
+                  </ImageView>
+<!--                  <Label fx:id="eventLocationLabel" styleClass="event-location" text="Dhaka" />-->
+                  <Label fx:id="eventDateLabel" styleClass="event-date" text="16 June, 2024" />
+              </HBox>
+          </VBox>
+      
+          <!-- Event Info Section -->
+          <TabPane layoutX="50.0" layoutY="480.0" prefHeight="400.0" prefWidth="764.0">
+              <!-- Description Tab -->
+              <Tab closable="false" text="Description">
+                  <AnchorPane>
+                      <Label fx:id="eventDescriptionLabel" layoutX="13.0" layoutY="13.0" prefWidth="780.0" text="Event description goes here." wrapText="true" />
+                  </AnchorPane>
+              </Tab>
+          </TabPane>
+      
+          <!-- Additional Info Section -->
+          <VBox layoutX="900.0" layoutY="480.0" spacing="20.0">
+              <!-- Price and Join Button -->
+              <VBox spacing="10.0">
+                  <Label fx:id="eventPriceLabel" styleClass="price-label" text="Price: Free" />
+                  <Button fx:id="joinPriceButton" onAction="#handleJoinPriceButtonClick" styleClass="join-now-button" text="Join Now" />
+              </VBox>
+      
+              <!-- Business Info -->
+              <VBox spacing="10.0">
+                  <Label prefHeight="27.0" prefWidth="104.0" styleClass="section-title" text="Event Location" />
+                  <Label fx:id="eventLocationLabel" text="154 Morgan Ave, Brooklyn, NY 11237" />
+              </VBox>
+      
+              <!-- Organizer Info -->
+              <VBox spacing="10.0">
+                  <Label styleClass="section-title" text="Organizer" />
+                  <ImageView fx:id="organizerImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@../images/organizer-logo.jpg" />
+                      </image>
+                  </ImageView>
+                  <Label fx:id="organizerNameLabel" text="UIU App Forum" />
+              </VBox>
+      
+              <!-- Event Timing -->
+              <VBox spacing="10.0">
+                  <Label styleClass="section-title" text="Time" />
+                  <Label fx:id="eventTimeLabel" text="10:00 am - 6:00 pm" textFill="#d36709" />
+              </VBox>
+      
+              <!-- QR Code and Registration -->
+              <VBox spacing="10.0">
+                  <Label styleClass="section-title" text="Registered" />
+                  <Label fx:id="registeredLabel" text="120" />
+                  <ImageView fx:id="qrCodeImageView" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@../images/qrcode.png" />
+                      </image>
+                  </ImageView>
+              </VBox>
+          </VBox>
+         <Pane fx:id="ruler" layoutX="862.0" layoutY="486.0" prefHeight="681.0" prefWidth="5.0" />
+      </AnchorPane>
+   </content>
+</ScrollPane>

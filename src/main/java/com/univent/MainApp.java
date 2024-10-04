@@ -12,18 +12,26 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
         try {
             // Load the SignUp.fxml file
-            Parent root = FXMLLoader.load(getClass().getResource("/view/LandingPage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LandingPage.fxml"));
+            Parent root = loader.load();
 
-            // Set the title and the scene
+            // Create the scene with the loaded FXML
+            Scene scene = new Scene(root);
+
+            // Set the title and apply the scene to the primary stage
             primaryStage.setTitle("Sign Up Form");
-            primaryStage.setScene(new Scene(root, 600, 400));
+            primaryStage.setScene(scene);
+
+            // Set the primary stage to be full screen and maximized
+            primaryStage.setMaximized(false);
+            primaryStage.setFullScreen(true);
+            primaryStage.setResizable(true);  // Prevent resizing
 
             // Show the primary stage
             primaryStage.show();
         } catch (Exception e) {
-            // Handle any exceptions that occur
             e.printStackTrace();
-            System.out.println("Error loading FXML file: " + e.getMessage());
+            System.out.println("Error loading FXML: " + e.getMessage());
         }
     }
 

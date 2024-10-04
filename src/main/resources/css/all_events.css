@@ -1,132 +1,65 @@
-/* General Container Styles */
-.anchor-pane {
-    -fx-background-color: #f4f4f4;
-}
+/* CSS for All Events Table */
 
-/* Sidebar Styles */
-.sidebar {
-    -fx-background-color: #333333;
-    -fx-padding: 20;
-    -fx-spacing: 15;
-}
-
-.nav-item {
-    -fx-font-size: 18px;
-    -fx-text-fill: #ffffff;
-    -fx-padding: 10;
-    -fx-cursor: hand;
-}
-
-.nav-item:hover {
-    -fx-background-color: #444444;
-    -fx-border-radius: 5;
-    -fx-padding: 10;
-}
-
-.add-event-button {
-    -fx-background-color: #ff7a5a;
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 16px;
-    -fx-border-radius: 10;
-    -fx-padding: 10;
-}
-
-.add-event-button:hover {
-    -fx-background-color: #e06950;
-}
-
-/* Content Area General Styling */
+/* General Styling for the Content Area */
 .content-area {
-    -fx-padding: 30;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
 }
 
-/* Heading Styles */
-.heading {
-    -fx-font-size: 24px;
+/* Table View Styling */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-padding: 20;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+}
+
+/* Header Label Styling */
+.header-label {
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-text-fill: #333333;
     -fx-padding: 10 0;
+    -fx-border-color: transparent transparent #ccc transparent;
+    -fx-border-width: 0 0 1 0;
 }
 
-/* Input Field Styles */
-.input-field {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #9a9a9a;
-    -fx-border-radius: 5;
-    -fx-padding: 10;
-    -fx-font-size: 16px;
-    -fx-pref-width: 400px;
+/* Data Label Styling */
+.data-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #666666;
+    -fx-padding: 10 0;
 }
 
-/* Save Event Button Styles */
-.save-event-button {
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 18px;
-    -fx-border-radius: 5;
-    -fx-padding: 10;
+/* Button Styling */
+.edit-button, .delete-button, .attendees-button {
+    -fx-background-color: #005cbf;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 5 15;
+    -fx-background-radius: 5;
     -fx-cursor: hand;
 }
 
-.save-event-button:hover {
-    -fx-background-color: #45a049;
+.edit-button {
+    -fx-background-color: #28a745; /* Green for Edit */
 }
 
-/* Join Now Button */
-.join-now-button {
-    -fx-background-color: #ff7a5a;
-    -fx-text-fill: white;
+.delete-button {
+    -fx-background-color: #dc3545; /* Red for Delete */
+}
+
+.attendees-button {
+    -fx-background-color: #007bff; /* Blue for Attendees */
+}
+
+/* Hover Effect for Buttons */
+.edit-button:hover, .delete-button:hover, .attendees-button:hover {
+    -fx-opacity: 0.85;
+}
+
+/* Image Styling */
+.image-column img {
     -fx-border-radius: 5;
-    -fx-font-size: 16px;
-}
-
-.join-now-button:hover {
-    -fx-background-color: #e06950;
-}
-
-
-
-/* General Container Styles */
-.event-list-section {
-    -fx-background-color: #ffffff;
-    -fx-padding: 20;
-}
-
-.heading {
-    -fx-font-size: 28px;
-    -fx-text-fill: #444444;
-    -fx-font-weight: bold;
-}
-
-/* Event Box Styles */
-.event-box {
-    -fx-background-color: #f9f9f9;
-    -fx-border-color: #dcdcdc;
-    -fx-border-width: 1;
-    -fx-padding: 10;
-    -fx-border-radius: 10;
-    -fx-spacing: 10;
-}
-
-.event-title {
-    -fx-font-size: 20px;
-    -fx-text-fill: #333333;
-    -fx-font-weight: bold;
-}
-
-.event-date, .event-organizer {
-    -fx-font-size: 16px;
-    -fx-text-fill: #777777;
-}
-
-.join-now-button {
-    -fx-background-color: #ff7a5a;
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 14px;
-    -fx-border-radius: 8;
-    -fx-padding: 5;
-}
-
-.join-now-button:hover {
-    -fx-background-color: #e06950;
 }

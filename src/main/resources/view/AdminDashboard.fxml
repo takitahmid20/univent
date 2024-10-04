@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.univent.controller.AdminDashboardController">
+    <!-- Top Menu Bar -->
+    <ToolBar styleClass="top-toolbar">
+        <Button text="Dashboard" onAction="#handleDashboardClick"/>
+        <Button text="All Events" onAction="#handleAllEventsClick"/>
+        <Button text="All Users" onAction="#handleAllUsersClick"/>
+        <Button text="Registered Events" onAction="#handleRegisteredEventsClick"/>
+    </ToolBar>
+
+    <!-- Main Content Area -->
+    <ScrollPane fx:id="contentArea">
+        <VBox spacing="20" styleClass="dashboard-content">
+            <HBox spacing="20" alignment="CENTER">
+                <VBox styleClass="stat-box">
+                    <Label text="Total Users" styleClass="stat-title"/>
+                    <Label fx:id="totalUsersLabel" styleClass="stat-value" text="0"/>
+                </VBox>
+                <VBox styleClass="stat-box">
+                    <Label text="Total Events" styleClass="stat-title"/>
+                    <Label fx:id="totalEventsLabel" styleClass="stat-value" text="0"/>
+                </VBox>
+                <VBox styleClass="stat-box">
+                    <Label text="Total Registered Users" styleClass="stat-title"/>
+                    <Label fx:id="totalRegisteredLabel" styleClass="stat-value" text="0"/>
+                </VBox>
+            </HBox>
+
+            <!-- Upcoming Events Table -->
+            <VBox>
+                <Label text="Upcoming Events" styleClass="section-title"/>
+                <TableView fx:id="upcomingEventsTable">
+                    <columns>
+                        <TableColumn text="Title" fx:id="titleColumn"/>
+                        <TableColumn text="Image" fx:id="imageColumn"/>
+                        <TableColumn text="Event Date" fx:id="eventDateColumn"/>
+                        <TableColumn text="Author" fx:id="authorColumn"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</BorderPane>

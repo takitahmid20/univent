@@ -2,48 +2,59 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.layout.GridPane?>
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/all_events.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.AllEventsController">
 
-    <!-- Sidebar for Navigation -->
-    <VBox fx:id="sidebar" layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="250.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <ImageView fx:id="logo" fitHeight="100.0" fitWidth="200.0" layoutX="25.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/logo.png" />
-            </image>
-        </ImageView>
-        <Label onMouseClicked="#handleDashboardClick" styleClass="nav-item" text="Dashboard" />
-        <Label onMouseClicked="#handleAllEventsClick" styleClass="nav-item" text="All Events" />
-        <Label onMouseClicked="#handleAddEventClick" styleClass="nav-item" text="Add Event" />
-        <Label onMouseClicked="#handleProfileClick" styleClass="nav-item" text="Profile" />
-        <Button fx:id="addEventButton" onAction="#handleAddEventButtonClick" styleClass="add-event-button" text="Add Event" />
-    </VBox>
-
     <!-- Main Content Area for All Events -->
-    <AnchorPane fx:id="contentArea" layoutX="250.0" layoutY="0.0" prefHeight="800.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <GridPane fx:id="eventListGrid" hgap="20" layoutX="50.0" layoutY="30.0" styleClass="event-list-grid" vgap="20">
-            <children>
-                <!-- Example of Event Box -->
-                <VBox prefHeight="200.0" prefWidth="200.0" styleClass="event-box">
-                    <ImageView fx:id="eventImage1" fitHeight="100.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@../images/bgimage.jpg" />
-                        </image>
-                    </ImageView>
-                    <Label styleClass="event-title" text="Event Title" />
-                    <Label styleClass="event-date" text="Date: March 10, 2024" />
-                    <Label styleClass="event-organizer" text="Organizer: Example Organizer" />
-                    <Button onAction="#handleJoinNowButtonClick" styleClass="join-now-button" text="Join Now" />
-                </VBox>
-                <!-- Add more event boxes here -->
-            </children>
-        </GridPane>
+    <AnchorPane fx:id="contentArea" layoutX="-3.0" layoutY="1.0" prefHeight="800.0" prefWidth="950.0" styleClass="content-area" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="253.0" AnchorPane.topAnchor="1.0">
+
+        <!-- TableView to display events -->
+        <VBox fx:id="tableView" layoutX="50.0" layoutY="30.0" spacing="10" styleClass="table-view">
+            <HBox spacing="20" styleClass="table-header">
+                <!-- Header Row -->
+                <Label text="Image" styleClass="header-label" prefWidth="120.0" />
+                <Label text="Title" styleClass="header-label" prefWidth="200.0" />
+                <Label text="Category" styleClass="header-label" prefWidth="150.0" />
+                <Label text="Created Date" styleClass="header-label" prefWidth="150.0" />
+                <Label text="Edit" styleClass="header-label" prefWidth="100.0" />
+                <Label text="Delete" styleClass="header-label" prefWidth="100.0" />
+                <Label text="Attendees" styleClass="header-label" prefWidth="120.0" />
+            </HBox>
+
+            <!-- Dummy Data Row (Example) -->
+            <HBox spacing="20" styleClass="table-row">
+                <!-- Image Column -->
+                <ImageView fitHeight="80.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/banner.jpg" />
+                    </image>
+                </ImageView>
+
+                <!-- Title Column -->
+                <Label text="Sample Event Title" styleClass="data-label" prefWidth="200.0" />
+
+                <!-- Category Column -->
+                <Label text="Workshop" styleClass="data-label" prefWidth="150.0" />
+
+                <!-- Created Date Column -->
+                <Label text="2024-10-03" styleClass="data-label" prefWidth="150.0" />
+
+                <!-- Edit Button Column -->
+                <Button text="Edit" styleClass="edit-button" prefWidth="100.0" onAction="#handleEditButtonClick" />
+
+                <!-- Delete Button Column -->
+                <Button text="Delete" styleClass="delete-button" prefWidth="100.0" onAction="#handleDeleteButtonClick" />
+
+                <!-- Attendees Button Column -->
+                <Button text="View Attendees" styleClass="attendees-button" prefWidth="120.0" onAction="#handleAttendeesButtonClick" />
+            </HBox>
+        </VBox>
     </AnchorPane>
-
 </AnchorPane>
-

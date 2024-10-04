@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane prefHeight="400.0" prefWidth="500.0" stylesheets="@../css/join_event.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.JoinEventPopupController">
+    <Label layoutX="20.0" layoutY="20.0" styleClass="form-title" text="Join Event" />
+
+    <!-- Name Field -->
+    <Label layoutX="20.0" layoutY="70.0" text="Name" />
+    <TextField fx:id="nameField" layoutX="150.0" layoutY="70.0" prefWidth="300.0" />
+
+    <!-- Email Field -->
+    <Label layoutX="20.0" layoutY="120.0" text="Email" />
+    <TextField fx:id="emailField" layoutX="150.0" layoutY="120.0" prefWidth="300.0" />
+
+    <!-- Mobile Number Field -->
+    <Label layoutX="20.0" layoutY="170.0" text="Mobile Number" />
+    <TextField fx:id="mobileNumberField" layoutX="150.0" layoutY="170.0" prefWidth="300.0" />
+
+    <!-- University Name Field -->
+    <Label layoutX="20.0" layoutY="220.0" text="University Name" />
+    <ComboBox fx:id="universityComboBox" layoutX="150.0" layoutY="220.0" prefWidth="300.0">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Ahsanullah University of Science and Technology" />
+                <String fx:value="Bangladesh University of Engineering and Technology (BUET)" />
+                <String fx:value="Dhaka University" />
+                <String fx:value="Jahangirnagar University" />
+                <!-- Add more universities -->
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <!-- Seat Selection -->
+    <Label layoutX="20.0" layoutY="270.0" text="Seat" />
+    <ComboBox fx:id="seatComboBox" layoutX="150.0" layoutY="270.0" prefWidth="300.0">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="1" />
+                <String fx:value="2" />
+                <String fx:value="3" />
+                <String fx:value="4" />
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <!-- Register Button -->
+    <Button fx:id="registerButton" layoutX="200.0" layoutY="320.0" onAction="#handleRegisterButtonClick" text="Register" styleClass="register-button" />
+</AnchorPane>
