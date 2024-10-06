@@ -1,6 +1,7 @@
 package com.univent.controller;
 
 import com.univent.services.EventService;
+import com.univent.session.Session;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
@@ -42,12 +43,11 @@ public class AddEventController {
 
     // Add a field to store the logged-in username
     private String loggedInUsername;
+    public void setLoggedInUsername(String username) {
+        this.loggedInUsername = username;
+        System.out.println("Logged in username set to: " + this.loggedInUsername); // Debugging line to ensure it is set correctly
+    }
 
-    // Set the logged-in username
-//    public void setLoggedInUsername(String username) {
-//        this.loggedInUsername = username;
-//        System.out.println("Logged in username set to: " + this.loggedInUsername); // Debugging line to ensure it is set correctly
-//    }
 
     @FXML
     private void handleImageUploadClick() {
@@ -71,10 +71,8 @@ public class AddEventController {
         }
     }
 
-    public void setLoggedInUsername(String username) {
-        this.loggedInUsername = username;
-        System.out.println("Logged in username set to: " + this.loggedInUsername); // Debugging line to ensure it is set correctly
-    }
+    // This method allows setting the logged-in username from the DashboardController
+
 
     @FXML
     private void handleCreateEventClick() {
@@ -120,6 +118,9 @@ public class AddEventController {
             return;
         }
 
+        // Get the logged-in user's ID from the session
+        int authorId = Session.getInstance().getLoggedInUserId();
+
         // Call the service to create the event
         eventService.createEvent(
                 eventTitleField.getText(),
@@ -134,7 +135,8 @@ public class AddEventController {
                 organizerLogoFile,
                 eventCategoryComboBox.getValue(),
                 price,
-                loggedInUsername // Pass the logged-in username as the author name
+                authorId,               // Pass the logged-in user's ID as the author ID
+                loggedInUsername        // Pass the logged-in username here
         );
 
         // Show success alert
@@ -147,6 +149,7 @@ public class AddEventController {
         // Clear form fields after successful creation
         clearFormFields();
     }
+
 
     // Method to clear form fields after creating an event
     private void clearFormFields() {
@@ -165,5 +168,4 @@ public class AddEventController {
         featureImageFile = null;
         organizerLogoFile = null;
     }
-
 }

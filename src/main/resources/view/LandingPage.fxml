@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.LandingPageController">
+<ScrollPane hbarPolicy="NEVER" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.LandingPageController">
    <content>
-      <AnchorPane prefHeight="1519.0" prefWidth="1444.0" stylesheets="@../css/style.css">
+      <AnchorPane prefHeight="1519.0" prefWidth="1440.0" stylesheets="@../css/style.css">
 
           <!-- Top Navbar -->
           <AnchorPane fx:id="navbar" prefHeight="70.0" styleClass="navbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -93,7 +93,16 @@
                               </Label>
                                       <Label styleClass="event-date" text="Date: March 10, 2024" />
                                       <Label styleClass="event-organizer" text="Organizer: Example Organizer" />
-                                      <Button fx:id="joinNowButton" styleClass="join-now-button" text="Join Now" />
+                                      <Button fx:id="joinNowButton" styleClass="join-now-button" text="Join Now" onAction="#handleJoinNowButtonClick" />
+                                      <Button fx:id="chatButton" styleClass="chat-button">
+                                          <graphic>
+                                              <ImageView fitHeight="24.0" fitWidth="24.0">
+                                                  <image>
+                                                      <Image url="@../images/chat-icon.png" />
+                                                  </image>
+                                              </ImageView>
+                                          </graphic>
+                                      </Button>
                                   </VBox>
                               </children>
                               <columnConstraints>

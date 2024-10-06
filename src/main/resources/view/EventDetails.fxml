@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane prefHeight="1389.0" prefWidth="1442.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.EventDetailsController">
+<ScrollPane prefHeight="1389.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.EventDetailsController">
    <content>
       <AnchorPane prefHeight="900.0" prefWidth="1440.0" stylesheets="@../css/event-details.css">
          <ImageView fx:id="eventImageView" fitHeight="377.0" fitWidth="1388.0" layoutX="18.0" layoutY="16.0" pickOnBounds="true" smooth="false" AnchorPane.leftAnchor="18.0">
@@ -105,11 +105,6 @@
               <!-- Organizer Info -->
               <VBox spacing="10.0">
                   <Label styleClass="section-title" text="Organizer" />
-                  <ImageView fx:id="organizerImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                      <image>
-                          <Image url="@../images/organizer-logo.jpg" />
-                      </image>
-                  </ImageView>
                   <Label fx:id="organizerNameLabel" text="UIU App Forum" />
               </VBox>
       
@@ -123,14 +118,18 @@
               <VBox spacing="10.0">
                   <Label styleClass="section-title" text="Registered" />
                   <Label fx:id="registeredLabel" text="120" />
-                  <ImageView fx:id="qrCodeImageView" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                      <image>
-                          <Image url="@../images/qrcode.png" />
-                      </image>
-                  </ImageView>
               </VBox>
           </VBox>
          <Pane fx:id="ruler" layoutX="862.0" layoutY="486.0" prefHeight="681.0" prefWidth="5.0" />
+            <Button fx:id="chatButton" layoutX="1343.0" layoutY="426.0" onAction="#handleChatButtonClick" styleClass="chat-button">
+                <graphic>
+                    <ImageView fitHeight="24.0" fitWidth="24.0">
+                        <image>
+                            <Image url="@../images/chat-icon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
       </AnchorPane>
    </content>
 </ScrollPane>

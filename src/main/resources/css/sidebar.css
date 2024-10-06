@@ -1,0 +1,29 @@
+.sidebar-item {
+    -fx-font-size: 16px;
+    -fx-padding: 10px;
+    -fx-text-fill: white;
+    -fx-background-color: #333;
+    -fx-cursor: hand;
+}
+
+.sidebar-item:hover {
+    -fx-background-color: #555;
+}
+.sidebar-item.active {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.sidebar-logout-button {
+    -fx-font-size: 16px;
+    -fx-padding: 10px;
+    -fx-background-color: #900;
+    -fx-text-fill: white;
+}
+
+.sidebar-logout-button:hover {
+    -fx-background-color: #b00;
+}
+.sidebar-bg{
+-fx-background-color: #333;
+}

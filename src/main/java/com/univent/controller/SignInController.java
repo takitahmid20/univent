@@ -1,7 +1,10 @@
 package com.univent.controller;
 
+import com.univent.session.Session;
+
 import com.univent.Entity.User;
 import com.univent.services.UserService;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +41,44 @@ public class SignInController {
     private UserService userService = new UserService();
 
     @FXML
+    public void initialize() {
+        // Defer the check for user login until after the scene is fully loaded
+        Platform.runLater(() -> {
+            // Check if the user is already logged in
+            if (Session.getInstance().isUserLoggedIn()) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Dashboard.fxml"));
+                    AnchorPane pane = loader.load();
+                    Stage stage = (Stage) signInButton.getScene().getWindow(); // After the scene is loaded, signInButton's scene will not be null
+                    Scene scene = new Scene(pane);
+                    stage.setScene(scene);
+                    stage.setTitle("Dashboard");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    messageLabel.setText("Error loading Dashboard.");
+                    messageLabel.setStyle("-fx-text-fill: red;");
+                }
+            }
+        });
+    }
+
+
+
+    private void redirectToDashboard() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Dashboard.fxml"));
+            AnchorPane pane = loader.load();
+            Stage stage = (Stage) signInButton.getScene().getWindow();
+            Scene scene = new Scene(pane);
+            stage.setScene(scene);
+            stage.setTitle("Dashboard");
+        } catch (IOException e) {
+            e.printStackTrace();
+            messageLabel.setText("Error loading Dashboard.");
+        }
+    }
+
+    @FXML
     private void handleSignInButton() {
         System.out.println("Clicked on sign in button");
         String username = usernameField.getText();
@@ -53,9 +94,14 @@ public class SignInController {
         // Authenticate the user
         boolean isAuthenticated = userService.authenticateUser(username, password);
         if (isAuthenticated) {
+
+            // Get the logged-in user by username (here is where we get the loggedInUser object)
             User loggedInUser = userService.getUserByUsername(username);
+
             if (loggedInUser != null) {
-                userService.loginUser(loggedInUser); // Now, the user object contains the ID and can be used later
+                System.out.println("Logged in user ID: " + loggedInUser.getId());
+                // Store the user information in the session (including ID and username)
+                Session.getInstance().setUserLoggedIn(true, username, loggedInUser.getId());
 
                 messageLabel.setText("Hello " + username + ", login successful! Welcome.");
                 messageLabel.setStyle("-fx-text-fill: green;");
@@ -65,10 +111,10 @@ public class SignInController {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Dashboard.fxml"));
                     AnchorPane pane = loader.load();
 
-                    // Get the DashboardController and set the logged-in user
+                    // Get the DashboardController and pass the logged-in user
                     DashboardController dashboardController = loader.getController();
-                    dashboardController.setUserService(userService); // Set the userService for further operations
-                    dashboardController.handleLogin(userService.getLoggedInUsername());
+                    dashboardController.setUserService(userService);  // Pass userService
+                    dashboardController.handleLogin(loggedInUser.getUsername());  // Pass the username to the dashboard
 
                     // Get the current stage
                     Stage stage = (Stage) signInButton.getScene().getWindow();
@@ -97,6 +143,8 @@ public class SignInController {
 
 
 
+
+
     @FXML
     private void handleSignUpLabelClick() {
         try {
@@ -119,23 +167,41 @@ public class SignInController {
     }
 
     public void handleAdminSignInButton() {
-        try {
-            // Load the SignUp.fxml file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AdminLogin.fxml"));
-            AnchorPane pane = loader.load();
+        if (Session.getInstance().isAdminLoggedIn()) {
+            try {
+                // Load the SignUp.fxml file
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AdminDashboard.fxml"));
+                AnchorPane pane = loader.load();
 
-            // Get the current stage
-            Stage stage = (Stage) adminSignInButton.getScene().getWindow();
+                // Get the current stage
+                Stage stage = (Stage) adminSignInButton.getScene().getWindow();
 
-            // Set the new scene
-            Scene scene = new Scene(pane);
-            stage.setScene(scene);
-            stage.setTitle("Admin Sign In");
-        } catch (IOException e) {
-            e.printStackTrace();
-            messageLabel.setText("Error loading Admin Sign In page.");
-            messageLabel.setStyle("-fx-text-fill: red;");
+                // Set the new scene
+                Scene scene = new Scene(pane);
+                stage.setScene(scene);
+                stage.setTitle("Admin Sign In");
+            } catch (IOException e) {
+                e.printStackTrace();
+                messageLabel.setText("Error loading Admin Sign In page.");
+                messageLabel.setStyle("-fx-text-fill: red;");
+            }
         }
+        else {
+            // If not logged in, go to Admin Login page
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AdminLogin.fxml"));
+                AnchorPane pane = loader.load();
+
+                Stage stage = (Stage) adminSignInButton.getScene().getWindow();
+                Scene scene = new Scene(pane);
+                stage.setScene(scene);
+                stage.setTitle("Admin Login");
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     @FXML

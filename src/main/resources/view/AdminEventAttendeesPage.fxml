@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 <AnchorPane prefHeight="800.0" prefWidth="1440.0" stylesheets="@../css/admin-event-attendees.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.AdminEventAttendeesController">
-
-    <!-- Top Navigation Bar -->
-    <HBox fx:id="topNavbar" alignment="CENTER_LEFT" prefHeight="70.0" spacing="20.0" styleClass="navbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Label onMouseClicked="#handleDashboardClick" styleClass="nav-item" text="Dashboard" />
-        <Label onMouseClicked="#handleAllEventsClick" styleClass="nav-item" text="All Events" />
-        <Label onMouseClicked="#handleAllUsersClick" styleClass="nav-item" text="All Users" />
-        <Label onMouseClicked="#handleRegisteredEventsClick" styleClass="nav-item" text="Registered Events" />
-        <Button fx:id="logoutButton" onAction="#handleLogoutButtonClick" styleClass="logout-button" text="Logout" />
-    </HBox>
+    <fx:include source="Navbar.fxml"/>
 
     <!-- Main Content Area -->
     <ScrollPane fx:id="attendeesScrollPane" layoutY="80.0" prefHeight="720.0" prefWidth="1440.0" styleClass="content-area" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">

@@ -3,11 +3,13 @@ package com.univent.controller;
 import com.univent.Entity.Event;
 import com.univent.services.EventService;
 import com.univent.services.UserService;
+import com.univent.session.Session;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
@@ -15,6 +17,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
@@ -55,6 +58,27 @@ public class AdminDashboardController {
     public void initialize() {
         loadStatistics();
         loadUpcomingEvents();
+        if (!Session.getInstance().isAdminLoggedIn()) {
+            redirectToAdminLogin();
+        }
+    }
+
+    private void redirectToAdminLogin() {
+        try {
+            // Load the AdminLogin.fxml page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AdminLogin.fxml"));
+            AnchorPane root = loader.load();
+
+            // Get the current stage and set the new scene (Admin Login Page)
+            Stage stage = (Stage) totalUsersLabel.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Admin Login");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // Method to load statistics

@@ -1,11 +1,16 @@
 package com.univent.services;
 
+import com.univent.Entity.Event;
+import com.univent.session.Session;
 import database.Database;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.univent.Entity.User;
 
 public class UserService {
@@ -37,8 +42,7 @@ public class UserService {
     public int getLoggedInUserId() {
         if (loggedInUser != null) {
             // If User does not have an ID, you need to add an `id` field to `User` class
-             return loggedInUser.getId();
-
+            return Session.getInstance().getLoggedInUserId();
         } else {
             System.err.println("Error: No user is logged in.");
             return 0;
@@ -92,6 +96,7 @@ public class UserService {
             if (rs.next()) {
                 // User authenticated successfully
                 loggedInUsername = username;
+                Session.getInstance().setUserLoggedIn(true, username, rs.getInt("id")); // Make sure to fetch ID
                 return true;
             }
 
@@ -153,13 +158,7 @@ public class UserService {
         return loggedInUsername;
     }
 
-    // Logout the current user
-    public void logout() {
-        System.out.println("User logged out successfully");
-        // Logic to clear the user's session
-        loggedInUsername = null;
-        // Any other cleanup needed for logging out
-    }
+
 
 
     // Update user profile (not implemented yet)
@@ -183,6 +182,7 @@ public class UserService {
             if (rs.next()) {
                 System.out.println("User found with username: " + rs.getString("username"));
                 user = new User();
+                user.setId(rs.getInt("id"));  // Fetch and set the user ID
                 user.setUsername(rs.getString("username"));
                 user.setEmail(rs.getString("email"));
                 user.setFullName(rs.getString("full_name"));
@@ -206,15 +206,19 @@ public class UserService {
 
 
 
+
     public boolean updateProfile(String username, String fullName, String password, String bio, String address,
-                                 String mobileNumber, String university, String profilePicture, String nidFront, String nidBack) {
-        String sql = "UPDATE users SET full_name = ?, password = ?, bio = ?, address = ?, mobile_number = ?, university = ?, profile_picture = ?, nid_front = ?, nid_back = ? WHERE username = ?";
+                                 String mobileNumber, String university, String profilePicture,
+                                 String nidFront, String nidBack) {
+        String sql = "UPDATE users SET full_name = ?, password = ?, bio = ?, address = ?, " +
+                "mobile_number = ?, university = ?, profile_picture = ?, nid_front = ?, nid_back = ? " +
+                "WHERE username = ?";
 
         try (Connection conn = Database.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, fullName);
-            pstmt.setString(2, password);
+            pstmt.setString(2, password); // Make sure you hash the password if necessary
             pstmt.setString(3, bio);
             pstmt.setString(4, address);
             pstmt.setString(5, mobileNumber);
@@ -222,16 +226,20 @@ public class UserService {
             pstmt.setString(7, profilePicture);
             pstmt.setString(8, nidFront);
             pstmt.setString(9, nidBack);
-            pstmt.setString(10, username);
+            pstmt.setString(10, username); // Username is used to locate the record
 
             int rowsAffected = pstmt.executeUpdate();
+
+            // Check if any rows were updated
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            System.out.println("Database update error: " + e.getMessage());
+            e.printStackTrace();
+            System.err.println("Database error: " + e.getMessage());
             return false;
         }
     }
+
 
     public int getTotalUsers() {
         String sql = "SELECT COUNT(*) FROM users";
@@ -245,6 +253,40 @@ public class UserService {
             System.err.println("Error fetching total users: " + e.getMessage());
         }
         return 0;
+    }
+
+    public List<Event> getEventsByAuthorId(int userId) {
+        List<Event> events = new ArrayList<>();
+        String sql = "SELECT * FROM events WHERE author_id = ?"; // Adjust your SQL according to your database structure
+
+        try (Connection conn = Database.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Event event = new Event();
+                event.setId(rs.getInt("id")); // Assuming you have an ID field
+                event.setTitle(rs.getString("title"));
+                event.setCategory(rs.getString("category"));
+                event.setFeatureImage(rs.getString("feature_image")); // Assuming you have this field
+                event.setStartDate(rs.getString("start_date")); // Adjust according to your database structure
+                event.setAuthorId(rs.getInt("author_id")); // Assuming you have an author_id field
+                events.add(event);
+            }
+        } catch (SQLException e) {
+            System.err.println("Database error: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return events;
+    }
+
+
+    public void logout() {
+        // Clear the session
+        com.univent.session.Session.getInstance().logout();
+        System.out.println("Session cleared successfully.");
     }
 
 

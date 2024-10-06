@@ -28,6 +28,7 @@
     <ComboBox fx:id="universityComboBox" layoutX="150.0" layoutY="220.0" prefWidth="300.0">
         <items>
             <FXCollections fx:factory="observableArrayList">
+                <String fx:value="United International University" />
                 <String fx:value="Ahsanullah University of Science and Technology" />
                 <String fx:value="Bangladesh University of Engineering and Technology (BUET)" />
                 <String fx:value="Dhaka University" />
@@ -50,6 +51,6 @@
         </items>
     </ComboBox>
 
-    <!-- Register Button -->a
+    <!-- Register Button -->
     <Button fx:id="registerButton" layoutX="200.0" layoutY="320.0" onAction="#handleRegisterButtonClick" text="Register" styleClass="register-button" />
 </AnchorPane>

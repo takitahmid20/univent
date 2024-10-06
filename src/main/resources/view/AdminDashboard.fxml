@@ -12,21 +12,22 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/admin-dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.AdminDashboardController">
+<AnchorPane prefHeight="800.0" prefWidth="1440.0" stylesheets="@../css/admin-dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.AdminDashboardController">
 
     <!-- Top Navigation Bar -->
-    <HBox fx:id="topNavbar" alignment="CENTER_LEFT" prefHeight="70.0" spacing="20.0" styleClass="navbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <ImageView fx:id="logo" fitHeight="50.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/logo.png" />
-            </image>
-        </ImageView>
-        <Label onMouseClicked="#handleDashboardClick" styleClass="nav-item" text="Dashboard" />
-        <Label onMouseClicked="#handleAllEventsClick" styleClass="nav-item" text="All Events" />
-        <Label onMouseClicked="#handleAllUsersClick" styleClass="nav-item" text="All Users" />
-        <Label onMouseClicked="#handleRegisteredEventsClick" styleClass="nav-item" text="Registered Events" />
-        <Button fx:id="logoutButton" onAction="#handleLogoutButtonClick" styleClass="logout-button" text="Logout" />
-    </HBox>
+<!--    <HBox fx:id="topNavbar" alignment="CENTER_LEFT" prefHeight="70.0" spacing="20.0" styleClass="navbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">-->
+<!--        <ImageView fx:id="logo" fitHeight="50.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">-->
+<!--            <image>-->
+<!--                <Image url="@../images/logo.png" />-->
+<!--            </image>-->
+<!--        </ImageView>-->
+<!--        <Label onMouseClicked="#handleDashboardClick" styleClass="nav-item" text="Dashboard" />-->
+<!--        <Label onMouseClicked="#handleAllEventsClick" styleClass="nav-item" text="All Events" />-->
+<!--        <Label onMouseClicked="#handleAllUsersClick" styleClass="nav-item" text="All Users" />-->
+<!--        <Label onMouseClicked="#handleRegisteredEventsClick" styleClass="nav-item" text="Registered Events" />-->
+<!--        <Button fx:id="logoutButton" onAction="#handleLogoutButtonClick" styleClass="logout-button" text="Logout" />-->
+<!--    </HBox>-->
+    <fx:include source="Navbar.fxml"/>
 
     <!-- Main Content Area -->
     <AnchorPane fx:id="contentArea" layoutY="80.0" prefHeight="720.0" prefWidth="1200.0" styleClass="content-area" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="sidebarContainer" prefHeight="1046.0" prefWidth="212.0" spacing="20.0" styleClass="sidebar-bg" stylesheets="@../css/sidebar.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.SidebarController">
+
+    <!-- Logo at the top of the sidebar -->
+    <ImageView fx:id="logoImageView" fitHeight="80.0" fitWidth="80.0" onMouseClicked="#handleLogoClick" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../images/logo.png" />
+        </image>
+    </ImageView>
+
+    <!-- Sidebar items -->
+    <Label onMouseClicked="#handleDashboardClick" styleClass="sidebar-item" text="Dashboard" />
+    <Label onMouseClicked="#handleProfileClick" styleClass="sidebar-item" text="Profile" />
+    <Label fx:id="eventsLabel" onMouseClicked="#handleEventsClick" styleClass="sidebar-item" text="Events" />
+    <Button fx:id="logoutButton" onAction="#handleLogoutClick" styleClass="sidebar-logout-button" text="Logout" />
+   <padding>
+      <Insets bottom="10.0" left="30.0" top="30.0" />
+   </padding>
+</VBox>

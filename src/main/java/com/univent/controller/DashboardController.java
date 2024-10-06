@@ -1,6 +1,7 @@
 package com.univent.controller;
 
 import com.univent.services.UserService;
+import com.univent.session.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +28,9 @@ public class DashboardController extends BaseController {
     private Label allEventsLabel;
 
     @FXML
+    private Label welcomeLabel;
+
+    @FXML
     private Button logoutButton;
     private UserService userService = new UserService();
     private String username;
@@ -35,6 +39,14 @@ public class DashboardController extends BaseController {
 
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+    @FXML
+    public void initialize() {
+        // Fetch the logged-in username from the session and display it
+        String username = Session.getInstance().getLoggedInUsername();
+        int userId = Session.getInstance().getLoggedInUserId();
+
+        welcomeLabel.setText("Welcome, " + username + " (ID: " + userId + ")");
     }
 
 //    @FXML
@@ -45,6 +57,7 @@ public class DashboardController extends BaseController {
 //            isDashboardLoaded = true;
 //        }
 //    }
+
 
     public void setUsername(String username) {
         System.out.println("Welcome "+username);
@@ -90,16 +103,17 @@ public class DashboardController extends BaseController {
 
     public void handleLogin(String username) {
         this.loggedInUsername = username;
-        usernameLabel.setText("Welcome "+this.loggedInUsername);
         System.out.println("Logged in username set to: " + this.loggedInUsername);
     }
 
     @FXML
-    public void handleAddEventClick() {
-        if (loggedInUsername == null) {
+    public void handleCreateEventButtonClick() {
+
+        String username = Session.getInstance().getLoggedInUsername();
+
+        if (username == null) {
             System.err.println("Error: loggedInUsername is null before loading AddEvent.fxml");
-        } else {
-            System.out.println("Proceeding with loggedInUsername: " + loggedInUsername);
+            return;
         }
 
         try {
@@ -107,7 +121,8 @@ public class DashboardController extends BaseController {
             Parent root = loader.load();
 
             AddEventController addEventController = loader.getController();
-            addEventController.setLoggedInUsername(loggedInUsername); // Pass the logged-in username here
+            addEventController.setLoggedInUsername(username); // Ensure this matches exactly
+
 
             contentArea.getChildren().setAll(root);
         } catch (IOException e) {
@@ -119,11 +134,11 @@ public class DashboardController extends BaseController {
 
 
 
-    @FXML
-    public void handleCreateEventButtonClick(){
-        System.out.println("CLicked on Create event button");
-        loadPage("AddEvent");
-    }
+//    @FXML
+//    public void handleCreateEventButtonClick(){
+//        System.out.println("CLicked on Create event button");
+//        loadPage("AddEvent");
+//    }
 
     @FXML
     public void handleProfileClick() {
@@ -164,20 +179,14 @@ public class DashboardController extends BaseController {
     private void handleLogoutButtonClick() {
         System.out.println("Logout Button Clicked");
 
-        // Ensure the logout button is not null
-        if (logoutButton == null) {
-            System.err.println("Error: Logout button is not initialized.");
-            return;
-        }
-
         // Ensure the UserService is initialized
         if (userService == null) {
             System.err.println("Error: UserService is not initialized.");
             return;
         }
 
-        // Log out the user using UserService
-        userService.logout(); // Assuming this method exists to clear session or similar
+        // Log out the user using UserService (clearing session)
+        userService.logout();  // You need to ensure UserService has a logout method
         System.out.println("User logged out successfully.");
 
         try {
@@ -186,8 +195,7 @@ public class DashboardController extends BaseController {
             ScrollPane pane = loader.load();
 
             // Get the current stage
-            Stage stage = (Stage) logoutButton.getScene().getWindow(); // 'logoutButton' is the ID of the logout button
-
+            Stage stage = (Stage) logoutButton.getScene().getWindow();  // Assuming logoutButton is not null and tied to UI
             if (stage == null) {
                 System.err.println("Error: Unable to get the current stage.");
                 return;
@@ -198,14 +206,15 @@ public class DashboardController extends BaseController {
             stage.setScene(scene);
             stage.setTitle("Landing Page");
 
-            // Optionally, clear logged-in user state here if needed
-            loggedInUsername = null;
+            // Clear any logged-in user state in the session or user service
+            loggedInUsername = null;  // This should clear the username or session-specific data.
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Error loading LandingPage.fxml: " + e.getMessage());
+            System.err.println("Error loading LandingPage.fxml: " + e.getMessage());
         }
     }
+
 
 
 }

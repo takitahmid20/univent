@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox fx:id="topNavbar" alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="1440.0" spacing="20.0" styleClass="navbar" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.NavbarController">
+
+    <!-- Logo -->
+    <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#handleLogoClick">
+        <image>
+            <Image url="@../images/logo.png" />  <!-- Replace with your logo path -->
+        </image>
+    </ImageView>
+
+    <!-- Navigation Items -->
+    <Label onMouseClicked="#handleDashboardClick" styleClass="nav-item" text="Dashboard" />
+    <Label onMouseClicked="#handleAllEventsClick" styleClass="nav-item" text="All Events" />
+    <Label onMouseClicked="#handleAllUsersClick" styleClass="nav-item" text="All Users" />
+    <Label onMouseClicked="#handleRegisteredEventsClick" styleClass="nav-item" text="Registered Events" />
+
+    <!-- Logout Button -->
+    <Button fx:id="logoutButton" onAction="#handleLogoutButtonClick" styleClass="logout-button" text="Logout" />
+
+</HBox>

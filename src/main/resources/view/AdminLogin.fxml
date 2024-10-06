@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/admin_login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.AdminLoginController">
+<AnchorPane prefHeight="774.0" prefWidth="1440.0" stylesheets="@../css/admin_login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.AdminLoginController">
 
     <!-- Background Image -->
     <ImageView fx:id="backgroundImage" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
@@ -19,7 +19,7 @@
     </ImageView>
 
     <!-- Login Form Container -->
-    <VBox fx:id="loginContainer" layoutX="250.0" layoutY="150.0" prefHeight="300.0" prefWidth="300.0" spacing="20.0" styleClass="login-container">
+    <VBox fx:id="loginContainer" layoutX="542.0" layoutY="177.0" prefHeight="300.0" prefWidth="300.0" spacing="20.0" styleClass="login-container">
         <!-- Logo -->
         <ImageView fx:id="logoImage" fitHeight="60.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
             <image>

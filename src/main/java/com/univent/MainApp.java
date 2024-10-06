@@ -19,12 +19,12 @@ public class MainApp extends Application {
             Scene scene = new Scene(root);
 
             // Set the title and apply the scene to the primary stage
-            primaryStage.setTitle("Sign Up Form");
+            primaryStage.setTitle("Univent | Your Ultimate Event Partner");
             primaryStage.setScene(scene);
 
             // Set the primary stage to be full screen and maximized
             primaryStage.setMaximized(false);
-            primaryStage.setFullScreen(true);
+            primaryStage.setFullScreen(false);
             primaryStage.setResizable(true);  // Prevent resizing
 
             // Show the primary stage

@@ -10,62 +10,71 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="947.0" prefWidth="800.0" stylesheets="@../css/add_event.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.AddEventController">
-    <Label layoutX="20.0" layoutY="20.0" styleClass="form-title" text="Add New Event" />
+<AnchorPane prefHeight="947.0" prefWidth="1440.0" stylesheets="@../css/add_event.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.AddEventController">
+<!--    <fx:include source="Sidebar.fxml" />-->
+    <AnchorPane fx:id="contentArea" layoutX="-95.0" layoutY="12.0" prefHeight="800.0" prefWidth="950.0" AnchorPane.bottomAnchor="-12.0" AnchorPane.leftAnchor="-95.0" AnchorPane.rightAnchor="345.0" AnchorPane.topAnchor="12.0">
 
-    <!-- Event Title -->
-    <Label layoutX="20.0" layoutY="60.0" text="Event Title" />
-    <TextField fx:id="eventTitleField" layoutX="189.0" layoutY="60.0" prefWidth="200.0" />
+        <Label layoutX="283.0" layoutY="70.0" styleClass="form-title" text="Add New Event" />
 
-    <!-- Event Description -->
-    <Label layoutX="20.0" layoutY="114.0" text="Event Description" />
-    <TextArea fx:id="eventDescriptionField" layoutX="189.0" layoutY="114.0" prefHeight="100.0" prefWidth="400.0" />
+        <!-- Event Title -->
+        <Label layoutX="283.0" layoutY="110.0" text="Event Title" />
+        <TextField fx:id="eventTitleField" layoutX="452.0" layoutY="110.0" prefWidth="200.0" />
 
-    <!-- Event Feature Image Upload -->
-    <Label layoutX="20.0" layoutY="226.0" text="Event Feature Image" />
-    <Button fx:id="featureImageButton" layoutX="189.0" layoutY="226.0" onAction="#handleImageUploadClick" text="Upload Image" />
-    <Label fx:id="featureImageLabel" layoutX="350.0" layoutY="231.0" text="No file chosen" />
+        <!-- Event Description -->
+        <Label layoutX="283.0" layoutY="164.0" text="Event Description" />
+        <TextArea fx:id="eventDescriptionField" layoutX="452.0" layoutY="164.0" prefHeight="100.0" prefWidth="400.0" />
 
-    <!-- Event Location -->
-    <Label layoutX="20.0" layoutY="272.0" text="Event Location" />
-    <TextField fx:id="eventLocationField" layoutX="189.0" layoutY="264.0" prefWidth="200.0" />
+        <!-- Event Feature Image Upload -->
+        <Label layoutX="283.0" layoutY="276.0" text="Event Feature Image" />
+        <Button fx:id="featureImageButton" layoutX="452.0" layoutY="276.0" onAction="#handleImageUploadClick" text="Upload Image" />
+        <Label fx:id="featureImageLabel" layoutX="613.0" layoutY="281.0" text="No file chosen" />
 
-    <!-- Start Date and Time -->
-    <Label layoutX="20.0" layoutY="327.0" text="Start Date &amp; Time" />
-    <DatePicker fx:id="startDatePicker" layoutX="189.0" layoutY="316.0" />
-    <TextField fx:id="startTimeField" layoutX="397.0" layoutY="331.0" prefHeight="40.0" prefWidth="82.0" promptText="HH:mm" />
+        <!-- Event Location -->
+        <Label layoutX="283.0" layoutY="322.0" text="Event Location" />
+        <TextField fx:id="eventLocationField" layoutX="452.0" layoutY="314.0" prefWidth="200.0" />
 
-    <!-- End Date and Time -->
-    <Label layoutX="20.0" layoutY="393.0" text="End Date &amp; Time" />
-    <DatePicker fx:id="endDatePicker" layoutX="189.0" layoutY="393.0" />
-    <TextField fx:id="endTimeField" layoutX="397.0" layoutY="406.0" prefHeight="40.0" prefWidth="82.0" promptText="HH:mm" />
+        <!-- Start Date and Time -->
+        <Label layoutX="283.0" layoutY="377.0" text="Start Date &amp; Time" />
+        <DatePicker fx:id="startDatePicker" layoutX="452.0" layoutY="366.0" />
+        <TextField fx:id="startTimeField" layoutX="660.0" layoutY="381.0" prefHeight="40.0" prefWidth="82.0" promptText="HH:mm" />
 
-    <!-- Organizer Name -->
-    <Label layoutX="20.0" layoutY="466.0" text="Organizer Name" />
-    <TextField fx:id="organizerNameField" layoutX="189.0" layoutY="466.0" prefWidth="200.0" />
+        <!-- End Date and Time -->
+        <Label layoutX="283.0" layoutY="443.0" text="End Date &amp; Time" />
+        <DatePicker fx:id="endDatePicker" layoutX="452.0" layoutY="443.0" />
+        <TextField fx:id="endTimeField" layoutX="660.0" layoutY="456.0" prefHeight="40.0" prefWidth="82.0" promptText="HH:mm" />
 
-    <!-- Organizer Logo Upload -->
-    <Label layoutX="20.0" layoutY="517.0" text="Organizer Logo" />
-    <Button fx:id="organizerLogoButton" layoutX="189.0" layoutY="517.0" onAction="#handleLogoUploadClick" text="Upload Logo" />
-    <Label fx:id="organizerLogoLabel" layoutX="350.0" layoutY="522.0" text="No file chosen" />
+        <!-- Organizer Name -->
+        <Label layoutX="283.0" layoutY="516.0" text="Organizer Name" />
+        <TextField fx:id="organizerNameField" layoutX="452.0" layoutY="516.0" prefWidth="200.0" />
 
-    <!-- Event Category -->
-    <Label layoutX="20.0" layoutY="569.0" text="Event Category" />
-    <ComboBox fx:id="eventCategoryComboBox" layoutX="189.0" layoutY="558.0">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Workshop" />
-                <String fx:value="Competition" />
-                <String fx:value="Seminar" />
-                <String fx:value="Business" />
-            </FXCollections>
-        </items>
-    </ComboBox>
+        <!-- Organizer Logo Upload -->
+        <Label layoutX="283.0" layoutY="567.0" text="Organizer Logo" />
+        <Button fx:id="organizerLogoButton" layoutX="452.0" layoutY="567.0" onAction="#handleLogoUploadClick" text="Upload Logo" />
+        <Label fx:id="organizerLogoLabel" layoutX="613.0" layoutY="572.0" text="No file chosen" />
 
-    <!-- Event Price -->
-    <Label layoutX="20.0" layoutY="634.0" text="Price" />
-    <TextField fx:id="priceField" layoutX="189.0" layoutY="628.0" prefWidth="100.0" promptText="0 means free" />
+        <!-- Event Category -->
+        <Label layoutX="283.0" layoutY="619.0" text="Event Category" />
+        <ComboBox fx:id="eventCategoryComboBox" layoutX="452.0" layoutY="608.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Workshop" />
+                    <String fx:value="Competition" />
+                    <String fx:value="Seminar" />
+                    <String fx:value="Business" />
+                </FXCollections>
+            </items>
+        </ComboBox>
 
-    <!-- Create Event Button -->
-    <Button layoutX="20.0" layoutY="697.0" fx:id="createEventButton" onAction="#handleCreateEventClick" styleClass="create-event-button" text="Create Event" />
+        <!-- Event Price -->
+        <Label layoutX="283.0" layoutY="684.0" text="Price" />
+        <TextField fx:id="priceField" layoutX="452.0" layoutY="678.0" prefWidth="100.0" promptText="0 means free" />
+
+        <!-- Create Event Button -->
+        <Button fx:id="createEventButton" layoutX="283.0" layoutY="747.0" onAction="#handleCreateEventClick" styleClass="create-event-button" text="Create Event" />
+
+
+
+
+
+    </AnchorPane>
 </AnchorPane>

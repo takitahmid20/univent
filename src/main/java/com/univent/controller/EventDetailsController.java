@@ -4,6 +4,7 @@ import com.univent.Entity.Event;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,6 +12,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -65,6 +67,7 @@ public class EventDetailsController extends BaseController {
     private Button joinPriceButton;  // Update this to match the button ID in the FXML file
 
     private Event selectedEvent;
+    private Event currentEvent;
 
     // Method to set the event details dynamically
     public void setEvent(Event event) {
@@ -171,9 +174,50 @@ public class EventDetailsController extends BaseController {
             System.err.println("Error: organizerImageView is not initialized.");
         }
 
-
-
     }
+
+    @FXML
+    private void handleChatButtonClick() {
+        try {
+            // Load the ChatPopup.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ChatPopup.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller
+            ChatController controller = loader.getController();
+
+            // Ensure that selectedEvent is not null before proceeding
+            if (selectedEvent != null) {
+                // Pass the event details to the chat popup
+                String eventTitle = selectedEvent.getTitle();  // Assuming event object has a getTitle() method
+                String eventId = String.valueOf(selectedEvent.getId());  // Convert int ID to string
+                String organizerName = selectedEvent.getOrganizer();  // Assuming selectedEvent has getOrganizer() method
+
+                // Initialize the chat popup with event details
+                controller.initialize(eventId, eventTitle, organizerName);
+
+                // Open the chat popup window
+                Stage stage = new Stage();
+                stage.setTitle("Chat with Event Organizer");
+                stage.setScene(new Scene(root));
+                stage.show();
+            } else {
+                System.out.println("Error: Event is not set.");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setEventDetails(Event event) {
+        this.selectedEvent = event;  // Set the event for this controller
+        // Update the UI with event details
+        setEvent(event);
+    }
+
+
+
 
     @FXML
     public void handleAllEventsClick(MouseEvent event) {

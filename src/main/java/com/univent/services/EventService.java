@@ -16,9 +16,9 @@ public class EventService {
     // Create a new event in the database
     public void createEvent(String title, String description, File featureImage, String location, String startDate,
                             String startTime, String endDate, String endTime, String organizer, File organizerLogo,
-                            String category, double price, String authorName) {
-        String sql = "INSERT INTO events (title, description, feature_image, location, start_date, start_time, end_date, end_time, organizer, organizer_logo, category, price, author_name) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            String category, double price, int authorId, String authorName) { // Added authorName parameter
+        String sql = "INSERT INTO events (title, description, feature_image, location, start_date, start_time, end_date, end_time, organizer, organizer_logo, category, price, author_id, author_name) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; // Updated SQL query to include author_name
 
         try (Connection conn = Database.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -35,7 +35,8 @@ public class EventService {
             pstmt.setString(10, organizerLogo != null ? organizerLogo.getPath() : null);
             pstmt.setString(11, category);
             pstmt.setDouble(12, price);
-            pstmt.setString(13, authorName); // Set the author name
+            pstmt.setInt(13, authorId); // Set the author ID
+            pstmt.setString(14, authorName); // Set the author name
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
@@ -87,13 +88,11 @@ public class EventService {
                 event.setOrganizer(rs.getString("organizer"));
                 event.setCategory(rs.getString("category"));
                 event.setPrice(rs.getDouble("price"));
-                event.setAuthorName(rs.getString("author_name"));
+                event.setAuthorId(rs.getInt("author_id")); // Fetch the author's ID
+                event.setAuthorName(rs.getString("author_name")); // Fetch the author's name
                 eventList.add(event);
                 System.out.println("Fetched event: ID=" + event.getId() + ", Title=" + event.getTitle());
-
             }
-
-
         } catch (SQLException e) {
             System.out.println("Database query error: " + e.getMessage());
         }
@@ -126,9 +125,9 @@ public class EventService {
                 event.setOrganizerLogo(rs.getString("organizer_logo"));
                 event.setCategory(rs.getString("category"));
                 event.setPrice(rs.getDouble("price"));
-                event.setAuthorName(rs.getString("author_name"));
+                event.setAuthorId(rs.getInt("author_id")); // Fetch the author's ID
+                event.setAuthorName(rs.getString("author_name")); // Fetch the author's name
             }
-
         } catch (SQLException e) {
             System.err.println("Database error while fetching the event: " + e.getMessage());
         }
@@ -138,11 +137,10 @@ public class EventService {
 
     public List<Event> getEventsByAuthorId(int authorId) {
         List<Event> events = new ArrayList<>();
-        String sql = "SELECT * FROM events WHERE author_id = ?";
+        String sql = "SELECT * FROM events WHERE author_id = ?"; // Adjust the query based on your table structure
 
         try (Connection conn = Database.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
             pstmt.setInt(1, authorId);
             ResultSet rs = pstmt.executeQuery();
 
@@ -161,15 +159,14 @@ public class EventService {
                 event.setOrganizerLogo(rs.getString("organizer_logo"));
                 event.setCategory(rs.getString("category"));
                 event.setPrice(rs.getDouble("price"));
-                event.setAuthorName(rs.getString("author_name"));
+                event.setAuthorId(rs.getInt("author_id")); // Fetch the author's ID
+                event.setCreatedDate(rs.getString("created_date"));
 
                 events.add(event);
             }
-
         } catch (SQLException e) {
-            System.err.println("Error fetching events for author ID: " + authorId + " - " + e.getMessage());
+            e.printStackTrace();
         }
-
         return events;
     }
 
@@ -212,7 +209,7 @@ public class EventService {
                 event.setId(rs.getInt("id"));
                 event.setTitle(rs.getString("title"));
                 event.setStartDate(rs.getString("start_date"));
-                event.setAuthorName(rs.getString("author_name"));
+                event.setAuthorName(rs.getString("author_name")); // Fetch the author's name
                 events.add(event);
             }
         } catch (SQLException e) {
@@ -240,8 +237,4 @@ public class EventService {
 
         return eventName;
     }
-
-
-
-
 }

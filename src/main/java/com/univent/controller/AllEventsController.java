@@ -3,6 +3,7 @@ package com.univent.controller;
 import com.univent.Entity.Event;
 import com.univent.services.EventService;
 import com.univent.services.UserService;
+import com.univent.session.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,28 +19,50 @@ import java.util.List;
 public class AllEventsController extends BaseController {
 
     @FXML
+    private ImageView eventImage; // Reference to event image
+    @FXML
+    private Label titleLabel;      // Reference to title label
+    @FXML
+    private Label categoryLabel;    // Reference to category label
+    @FXML
+    private Label createdDateLabel; // Reference to created date label
+    @FXML
+    private Button editButton;      // Reference to edit button
+    @FXML
+    private Button deleteButton;     // Reference to delete button
+    @FXML
+    private Button attendeesButton;
+
+    @FXML
     private VBox tableView;  // VBox that acts as the table view container
 
     private final EventService eventService = new EventService();
     private UserService userService;
+    private String loggedInUsername;
 
     // Setter method to set UserService instance from the previous controller
     public void setUserService(UserService userService) {
         this.userService = userService;
         System.out.println("UserService has been set in AllEventsController.");
-
+        loadUserEvents();
+    }
+    public void setLoggedInUsername(String username) {
+        this.loggedInUsername = username;
+        System.out.println("Logged-in username set: " + username);
         loadUserEvents();
     }
 
+
     // Method to load events for the logged-in user
     private void loadUserEvents() {
+
         if (userService == null) {
             System.err.println("UserService is not set. Ensure it is passed from the previous controller.");
             return;
         }
 
-        // Get the logged-in user's ID (assuming userService has a method for this)
-        int loggedInUserId = userService.getLoggedInUserId();
+        // Get the logged-in user's ID
+        int loggedInUserId = Session.getInstance().getLoggedInUserId();
         if (loggedInUserId == 0) {
             System.err.println("No user is logged in.");
             return;
@@ -51,15 +74,15 @@ public class AllEventsController extends BaseController {
             System.out.println("No events found for author with ID: " + loggedInUserId);
         } else {
             System.out.println("Number of events found for author with ID '" + loggedInUserId + "': " + userEvents.size());
+            for (Event event : userEvents) {
+                System.out.println("Event Title: " + event.getTitle());
+                System.out.println("Event Category: " + event.getCategory());
+                System.out.println("Event Created Date: " + event.getCreatedDate());
+                // Add more fields as needed
+            }
             populateEventTable(userEvents);
         }
     }
-
-    @FXML
-    public void initialize() {
-
-    }
-
 
     // Method to populate the event table with data
     private void populateEventTable(List<Event> events) {
@@ -129,20 +152,25 @@ public class AllEventsController extends BaseController {
         }
     }
 
-
+    // Handlers for button actions
     private void handleEditButtonClick(Event event) {
         System.out.println("Editing event: " + event.getTitle());
-        // Add your edit event logic here
+        // Logic for editing the event
     }
 
     private void handleDeleteButtonClick(Event event) {
         System.out.println("Deleting event: " + event.getTitle());
-        // Add your delete event logic here
+        // Logic for deleting the event
     }
 
     private void handleAttendeesButtonClick(Event event) {
         System.out.println("Viewing attendees for event: " + event.getTitle());
-        // Add your attendees viewing logic here
+        // Logic for viewing attendees of the event
+    }
+
+    @FXML
+    public void initialize() {
+        // Initialization logic if needed
     }
 
     public void handleEditButtonClick(ActionEvent actionEvent) {
@@ -157,209 +185,3 @@ public class AllEventsController extends BaseController {
 
     }
 }
-
-
-
-
-
-
-
-
-// -----------
-//-----------
-//------------
-
-
-
-
-
-
-
-
-
-
-
-//package com.univent.controller;
-//
-//import com.univent.Entity.Event;
-//import com.univent.services.EventService;
-//import javafx.collections.FXCollections;
-//import javafx.collections.ObservableList;
-//import javafx.event.ActionEvent;
-//import javafx.fxml.FXML;
-//import javafx.scene.control.Button;
-//import javafx.scene.control.TableCell;
-//import javafx.scene.control.TableColumn;
-//import javafx.scene.control.TableView;
-//import javafx.scene.image.Image;
-//import javafx.scene.image.ImageView;
-//
-//import java.io.File;
-//import java.util.List;
-//
-//public class AllEventsController extends BaseController {
-//
-//    @FXML
-//    private TableView<Event> eventTableView;
-//
-//    @FXML
-//    private TableColumn<Event, String> imageColumn;
-//
-//    @FXML
-//    private TableColumn<Event, String> titleColumn;
-//
-//    @FXML
-//    private TableColumn<Event, String> categoryColumn;
-//
-//    @FXML
-//    private TableColumn<Event, String> createdDateColumn;
-//
-//    @FXML
-//    private TableColumn<Event, Void> editColumn;
-//
-//    @FXML
-//    private TableColumn<Event, Void> deleteColumn;
-//
-//    @FXML
-//    private TableColumn<Event, Void> attendeesColumn;
-//
-//    private final EventService eventService = new EventService();
-//
-////    @FXML
-////    public void initialize() {
-////        loadAllEvents();
-////    }
-//
-//    private void loadAllEvents() {
-//        // Fetch events from EventService
-//        List<Event> eventList = eventService.getAllEvents();
-//        ObservableList<Event> observableEventList = FXCollections.observableArrayList(eventList);
-//
-//        // Set data to the table view
-////        eventTableView.setItems(observableEventList);
-//
-//        // Configure columns
-//        imageColumn.setCellFactory(column -> new TableCell<Event, String>() {
-//            private final ImageView imageView = new ImageView();
-//
-//            @Override
-//            protected void updateItem(String imagePath, boolean empty) {
-//                super.updateItem(imagePath, empty);
-//
-//                if (empty || imagePath == null || imagePath.isEmpty()) {
-//                    setGraphic(null);
-//                } else {
-//                    File imageFile = new File(imagePath);
-//                    Image image = imageFile.exists() ? new Image(imageFile.toURI().toString()) : new Image("/images/event-placeholder.jpg");
-//                    imageView.setImage(image);
-//                    imageView.setFitHeight(80);
-//                    imageView.setFitWidth(120);
-//                    imageView.setPreserveRatio(true);
-//                    setGraphic(imageView);
-//                }
-//            }
-//        });
-//
-//        titleColumn.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
-//        categoryColumn.setCellValueFactory(cellData -> cellData.getValue().categoryProperty());
-//        createdDateColumn.setCellValueFactory(cellData -> cellData.getValue().createdDateProperty());
-//
-//        // Add Edit button to each row
-//        editColumn.setCellFactory(column -> new TableCell<Event, Void>() {
-//            private final Button editButton = new Button("Edit");
-//
-//            {
-//                editButton.setOnAction(e -> handleEditButtonClick(getTableView().getItems().get(getIndex())));
-//                editButton.getStyleClass().add("edit-button");
-//            }
-//
-//            @Override
-//            protected void updateItem(Void item, boolean empty) {
-//                super.updateItem(item, empty);
-//                if (empty) {
-//                    setGraphic(null);
-//                } else {
-//                    setGraphic(editButton);
-//                }
-//            }
-//        });
-//
-//        // Add Delete button to each row
-//        deleteColumn.setCellFactory(column -> new TableCell<Event, Void>() {
-//            private final Button deleteButton = new Button("Delete");
-//
-//            {
-//                deleteButton.setOnAction(e -> handleDeleteButtonClick(getTableView().getItems().get(getIndex())));
-//                deleteButton.getStyleClass().add("delete-button");
-//            }
-//
-//            @Override
-//            protected void updateItem(Void item, boolean empty) {
-//                super.updateItem(item, empty);
-//                if (empty) {
-//                    setGraphic(null);
-//                } else {
-//                    setGraphic(deleteButton);
-//                }
-//            }
-//        });
-//
-//        // Add View Attendees button to each row
-//        attendeesColumn.setCellFactory(column -> new TableCell<Event, Void>() {
-//            private final Button attendeesButton = new Button("View Attendees");
-//
-//            {
-//                attendeesButton.setOnAction(e -> handleAttendeesButtonClick(getTableView().getItems().get(getIndex())));
-//                attendeesButton.getStyleClass().add("attendees-button");
-//            }
-//
-//            @Override
-//            protected void updateItem(Void item, boolean empty) {
-//                super.updateItem(item, empty);
-//                if (empty) {
-//                    setGraphic(null);
-//                } else {
-//                    setGraphic(attendeesButton);
-//                }
-//            }
-//        });
-//    }
-//
-//    @FXML
-//    private void handleEditButtonClick(Event event) {
-//        // Logic for editing an event
-//        System.out.println("Edit button clicked for event: " + event.getTitle());
-//        // Implement the logic to open the edit event page
-//    }
-//
-//    @FXML
-//    private void handleDeleteButtonClick(Event event) {
-//        // Logic for deleting an event
-//        System.out.println("Delete button clicked for event: " + event.getTitle());
-//        boolean deleted = eventService.deleteEvent(event.getId());
-//        if (deleted) {
-//            eventTableView.getItems().remove(event);
-//        } else {
-//            System.out.println("Error deleting the event: " + event.getTitle());
-//        }
-//    }
-//
-//    @FXML
-//    private void handleAttendeesButtonClick(Event event) {
-//        // Logic for viewing attendees of an event
-//        System.out.println("View attendees button clicked for event: " + event.getTitle());
-//        // Implement the logic to open the attendees list for the selected event
-//    }
-//
-//    public void handleEditButtonClick(ActionEvent actionEvent) {
-//
-//    }
-//
-//    public void handleDeleteButtonClick(ActionEvent actionEvent) {
-//
-//    }
-//
-//    public void handleAttendeesButtonClick(ActionEvent actionEvent) {
-//
-//    }
-//}

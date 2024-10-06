@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -25,6 +26,9 @@ public class AdminAllEventsController {
 
     @FXML
     private FlowPane eventsFlowPane;
+
+    @FXML
+    private AnchorPane contentArea;
 
     private final EventService eventService = new EventService();
 
@@ -117,11 +121,19 @@ public class AdminAllEventsController {
     // Handle attendees button click event
 
 
-    public void handleDashboardClick(MouseEvent event) {
-
+    public void handleDashboardClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AdminDashboard.fxml"));
+            AnchorPane page = loader.load();
+            contentArea.getChildren().setAll(page);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error loading page AdminDashboardPage");
+        }
     }
 
-    public void handleAllEventsClick(MouseEvent event) {
+    public void handleAllEventsClick() {
+
 
     }
 

@@ -12,7 +12,8 @@
 
 <ScrollPane hbarPolicy="NEVER" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.AdminAllEventsController">
    <content>
-      <AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/admin-all-events.css">
+      <AnchorPane prefHeight="800.0" prefWidth="1440.0" stylesheets="@../css/admin-all-events.css">
+          <fx:include source="Navbar.fxml" />
       
           <!-- Main Content Area -->
           <AnchorPane fx:id="contentArea" layoutY="80.0" prefHeight="720.0" prefWidth="1200.0" styleClass="content-area" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
@@ -38,10 +39,10 @@
                   </VBox>
                   <!-- Additional event boxes will be dynamically added here -->
               </FlowPane>
+      
+                 <!-- Title Section -->
+              <Label layoutX="28.0" layoutY="23.0" styleClass="section-title" text="All Events" />
           </AnchorPane>
-   
-              <!-- Title Section -->
-           <Label layoutX="28.0" layoutY="56.0" styleClass="section-title" text="All Events" />
       
       </AnchorPane>
    </content>

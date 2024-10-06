@@ -3,7 +3,6 @@ package com.univent.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import com.univent.services.UserService;
@@ -20,7 +19,6 @@ import javafx.fxml.FXMLLoader;
 import java.io.File;
 import java.io.IOException;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 import java.util.List;
 
@@ -44,6 +42,11 @@ public class LandingPageController extends BaseController {
 
     @FXML
     private Button joinNowButton;
+
+    @FXML
+    private Button chatButton;
+
+    private boolean isLoggedIn = false;
 
 //    @FXML
 //    private String eventTitle;
@@ -220,7 +223,8 @@ public class LandingPageController extends BaseController {
         // Join Now Button
         Button joinNowButton = new Button("Join Now");
         joinNowButton.getStyleClass().add("join-now-button");
-        joinNowButton.setOnAction(e -> handleJoinNowButtonClick(event));  // Pass event object here
+        joinNowButton.setUserData(event); // Set the associated event object
+        joinNowButton.setOnAction(this::handleJoinNowButtonClick);  // Pass event object here
 
         // Add all elements to the event box
         eventBox.getChildren().addAll(eventImage, eventTitle, eventDate, eventOrganizer, joinNowButton);
@@ -229,30 +233,38 @@ public class LandingPageController extends BaseController {
     }
 
     @FXML
-    private void handleJoinNowButtonClick(Event event) {
+    private void handleJoinNowButtonClick(ActionEvent actionEvent) {
+        // Get the button that was clicked
+        Button sourceButton = (Button) actionEvent.getSource();
+
+        // Retrieve the event object from the button's user data
+        Event event = (Event) sourceButton.getUserData();
+
+        // Ensure that the event object is not null
         if (event == null || event.getId() == 0) {
             System.err.println("Error: No valid event selected for registration.");
             return;
         }
 
-        // Debug message to verify event
         System.out.println("Registering for event ID: " + event.getId());
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/JoinEventPopup.fxml"));
-            AnchorPane root = loader.load();
+            Parent root = loader.load();
 
-            // Pass the event ID to the join popup controller
+            // Get the controller and pass the event ID
             JoinEventPopupController controller = loader.getController();
-            controller.setEventId(event.getId());
+            controller.setEventId(event.getId()); // Pass the event ID
 
+            // Create a new stage for the popup
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Join Event");
-            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initModality(Modality.APPLICATION_MODAL); // Ensure it blocks interaction with other windows
             stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
+            System.err.println("Error loading JoinEventPopup.fxml: " + e.getMessage());
         }
     }
 
@@ -303,6 +315,8 @@ public class LandingPageController extends BaseController {
             e.printStackTrace();
         }
     }
+
+
 
 
 }

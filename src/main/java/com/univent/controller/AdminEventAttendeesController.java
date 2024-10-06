@@ -5,11 +5,17 @@ import com.univent.services.AttendeeService;
 import com.univent.services.EventService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.List;
 
 public class AdminEventAttendeesController {
@@ -95,11 +101,37 @@ public class AdminEventAttendeesController {
 
     // Handle navigation events
     public void handleDashboardClick(ActionEvent event) {
-        // Logic to navigate back to Dashboard
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AdminDashboard.fxml"));
+            AnchorPane pane = loader.load();
+
+            Stage stage = (Stage) ((Label) event.getSource()).getScene().getWindow(); // Use the event to get the current stage
+            Scene scene = new Scene(pane);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error loading page: " + e.getMessage());
+        }
+
     }
 
     public void handleAllEventsClick(ActionEvent event) {
         // Logic to navigate to All Events page
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AdminAllEventsPage.fxml"));
+            AnchorPane pane = loader.load();
+
+            Stage stage = (Stage) ((Label) event.getSource()).getScene().getWindow(); // Use the event to get the current stage
+            Scene scene = new Scene(pane);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error loading page: " + e.getMessage());
+        }
     }
 
     public void handleAllUsersClick(ActionEvent event) {
@@ -113,4 +145,5 @@ public class AdminEventAttendeesController {
     public void handleLogoutButtonClick(ActionEvent actionEvent) {
         // Logic to logout the user
     }
+
 }

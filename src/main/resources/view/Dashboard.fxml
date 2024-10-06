@@ -9,24 +9,26 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.DashboardController">
+<AnchorPane prefHeight="800.0" prefWidth="1440.0" stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.DashboardController">
 
     <!-- Sidebar for Navigation -->
-    <VBox fx:id="sidebar" layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="250.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <ImageView fx:id="logo" fitHeight="50.0" fitWidth="150.0" layoutX="25.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/logo.png" />
-            </image>
-        </ImageView>
-        <Label onMouseClicked="#handleDashboardClick" styleClass="nav-item" text="Dashboard" />
-        <Label fx:id="allEventsLabel" onMouseClicked="#handleAllEventsClick" styleClass="nav-item" text="All Events" />
-        <Label onMouseClicked="#handleAddEventClick" styleClass="nav-item" text="Add Event" />
-        <Label onMouseClicked="#handleProfileClick" styleClass="nav-item" text="Profile" />
-        <Button fx:id="logoutButton" onAction="#handleLogoutButtonClick" styleClass="logout-button" text="Logout" />
-    </VBox>
+<!--    <VBox fx:id="sidebar" layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="250.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">-->
+<!--        <ImageView fx:id="logo" fitHeight="50.0" fitWidth="150.0" layoutX="25.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">-->
+<!--            <image>-->
+<!--                <Image url="@../images/logo.png" />-->
+<!--            </image>-->
+<!--        </ImageView>-->
+<!--        <Label onMouseClicked="#handleDashboardClick" styleClass="nav-item" text="Dashboard" />-->
+<!--        <Label fx:id="allEventsLabel" onMouseClicked="#handleAllEventsClick" styleClass="nav-item" text="All Events" />-->
+<!--        <Label onMouseClicked="#handleAddEventClick" styleClass="nav-item" text="Add Event" />-->
+<!--        <Label onMouseClicked="#handleProfileClick" styleClass="nav-item" text="Profile" />-->
+<!--        <Button fx:id="logoutButton" onAction="#handleLogoutButtonClick" styleClass="logout-button" text="Logout" />-->
+<!--    </VBox>-->
+    <fx:include source="Sidebar.fxml" />
+
 
     <!-- Main Content Area -->
-    <AnchorPane fx:id="contentArea" layoutX="250.0" prefHeight="800.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <AnchorPane fx:id="contentArea" layoutX="250.0" prefHeight="800.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <VBox layoutX="20.0" layoutY="20.0" prefWidth="910.0" spacing="20.0">
 
             <!-- Dashboard Title and Create Event Button -->
@@ -34,7 +36,7 @@
                 <Label styleClass="dashboard-title" text="Dashboard" />
       
               <!-- Username Label at the bottom of the sidebar -->
-              <Label fx:id="usernameLabel" alignment="CENTER" prefHeight="40.0" prefWidth="260.0" styleClass="username-label" />
+              <Label fx:id="welcomeLabel" alignment="CENTER" prefHeight="40.0" prefWidth="260.0" styleClass="username-label" />
             </HBox>
 
             <!-- Summary Cards -->

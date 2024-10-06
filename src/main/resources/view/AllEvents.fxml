@@ -2,59 +2,60 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/all_events.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.AllEventsController">
+<AnchorPane prefHeight="800.0" prefWidth="1440.0" stylesheets="@../css/all_events.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univent.controller.AllEventsController">
+
+    <fx:include source="Sidebar.fxml" />
 
     <!-- Main Content Area for All Events -->
-    <AnchorPane fx:id="contentArea" layoutX="-3.0" layoutY="1.0" prefHeight="800.0" prefWidth="950.0" styleClass="content-area" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="253.0" AnchorPane.topAnchor="1.0">
+    <AnchorPane fx:id="contentArea" layoutX="186.0" layoutY="-5.0" prefHeight="800.0" prefWidth="950.0" styleClass="content-area" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="186.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="-5.0">
 
         <!-- TableView to display events -->
         <VBox fx:id="tableView" layoutX="50.0" layoutY="30.0" spacing="10" styleClass="table-view">
             <HBox spacing="20" styleClass="table-header">
                 <!-- Header Row -->
-                <Label text="Image" styleClass="header-label" prefWidth="120.0" />
-                <Label text="Title" styleClass="header-label" prefWidth="200.0" />
-                <Label text="Category" styleClass="header-label" prefWidth="150.0" />
-                <Label text="Created Date" styleClass="header-label" prefWidth="150.0" />
-                <Label text="Edit" styleClass="header-label" prefWidth="100.0" />
-                <Label text="Delete" styleClass="header-label" prefWidth="100.0" />
-                <Label text="Attendees" styleClass="header-label" prefWidth="120.0" />
+                <Label prefWidth="120.0" styleClass="header-label" text="Image" />
+                <Label prefWidth="200.0" styleClass="header-label" text="Title" />
+                <Label prefWidth="150.0" styleClass="header-label" text="Category" />
+                <Label prefWidth="150.0" styleClass="header-label" text="Created Date" />
+                <Label prefWidth="100.0" styleClass="header-label" text="Edit" />
+                <Label prefWidth="100.0" styleClass="header-label" text="Delete" />
+                <Label prefWidth="120.0" styleClass="header-label" text="Attendees" />
             </HBox>
 
             <!-- Dummy Data Row (Example) -->
-            <HBox spacing="20" styleClass="table-row">
+            <HBox fx:id="eventRow" spacing="20" styleClass="table-row">
                 <!-- Image Column -->
-                <ImageView fitHeight="80.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="eventImageView" fitHeight="80.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../images/banner.jpg" />
                     </image>
                 </ImageView>
 
                 <!-- Title Column -->
-                <Label text="Sample Event Title" styleClass="data-label" prefWidth="200.0" />
+                <Label fx:id="titleLabel" prefWidth="200.0" styleClass="data-label" text="Sample Event Title" />
 
                 <!-- Category Column -->
-                <Label text="Workshop" styleClass="data-label" prefWidth="150.0" />
+                <Label fx:id="categoryLabel" prefWidth="150.0" styleClass="data-label" text="Workshop" />
 
                 <!-- Created Date Column -->
-                <Label text="2024-10-03" styleClass="data-label" prefWidth="150.0" />
+                <Label fx:id="createdDateLabel" prefWidth="150.0" styleClass="data-label" text="2024-10-03" />
 
                 <!-- Edit Button Column -->
-                <Button text="Edit" styleClass="edit-button" prefWidth="100.0" onAction="#handleEditButtonClick" />
+                <Button fx:id="editButton" onAction="#handleEditButtonClick" prefWidth="100.0" styleClass="edit-button" text="Edit" />
 
                 <!-- Delete Button Column -->
-                <Button text="Delete" styleClass="delete-button" prefWidth="100.0" onAction="#handleDeleteButtonClick" />
+                <Button fx:id="deleteButton" onAction="#handleDeleteButtonClick" prefWidth="100.0" styleClass="delete-button" text="Delete" />
 
                 <!-- Attendees Button Column -->
-                <Button text="View Attendees" styleClass="attendees-button" prefWidth="120.0" onAction="#handleAttendeesButtonClick" />
+                <Button fx:id="attendeesButton" onAction="#handleAttendeesButtonClick" prefWidth="120.0" styleClass="attendees-button" text="View Attendees" />
             </HBox>
+
         </VBox>
     </AnchorPane>
 </AnchorPane>

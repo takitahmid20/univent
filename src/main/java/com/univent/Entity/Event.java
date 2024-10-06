@@ -21,6 +21,7 @@ public class Event {
     private final DoubleProperty price;
     private final StringProperty authorName;
     private final StringProperty createdDate; // New property for created date
+    private int authorId; // Author ID property
 
     // Adding id as a normal int field (not a property)
     private int id;
@@ -219,5 +220,14 @@ public class Event {
 
     public StringProperty createdDateProperty() {
         return createdDate;
+    }
+
+    // Getter and Setter for authorId
+    public int getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
     }
 }

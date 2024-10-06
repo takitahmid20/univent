@@ -1,5 +1,6 @@
 package com.univent.controller;
 
+import com.univent.session.Session;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -38,6 +39,7 @@ public class AdminLoginController {
         // Check static credentials
         if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
             try {
+                Session.getInstance().setAdminLoggedIn(true);
                 // Load the AdminDashboard.fxml page
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AdminDashboard.fxml"));
                 AnchorPane pane = loader.load();

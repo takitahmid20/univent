@@ -2,6 +2,7 @@ package com.univent.controller;
 
 import com.univent.Entity.User;
 import com.univent.services.UserService;
+import com.univent.session.Session;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -45,15 +46,16 @@ public class ProfileController {
     private UserService userService = new UserService();
     private String loggedInUsername;
 
-    private int loggedInUserId;
+    public void initialize() {
+        // Fetch the logged-in username from the session
+        loggedInUsername = Session.getInstance().getLoggedInUsername();
 
-    public void initialize(String username) {
-        this.loggedInUsername = username;
+        // Fetch user data from the database using the username
+        User user = userService.getUserByUsername(loggedInUsername);
 
-        // Fetch user data from the database
-        User user = userService.getUserByUsername(username);
-        // Set the data to the profile fields
+        // Check if the user object is valid
         if (user != null) {
+            // Set the data to the profile fields
             usernameField.setText(user.getUsername());
             emailField.setText(user.getEmail());
             passwordField.setPromptText("Enter new password"); // Password should be set as prompt to avoid displaying it in plaintext
@@ -99,8 +101,6 @@ public class ProfileController {
             System.err.println("Error: User not found in the database.");
         }
     }
-
-
 
     @FXML
     private void handleProfilePictureUploadClick() {
